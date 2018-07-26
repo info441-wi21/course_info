@@ -1,0 +1,363 @@
+<p>Now that you have packages to track sessions, manage user accounts, and authenticate those users, it's time to add to them to your web server by creating APIs for sign-up, sign-in, sign-out, user profile get/patch. You'll also create a new web client that uses these APIs.</p>
+
+<h2>Helpful Resources</h2>
+
+<p>The following resources will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a></li>
+</ul>
+
+<h2>Checkout the Branch</h2>
+
+<p>Your challenges repo should already contain an <code>auth</code> branch with the requisite starter code. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>sessions</code> branch into the <code>auth</code> branch:</p>
+
+<pre><code>git checkout auth
+git merge sessions</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>There should be a few new files in this branch:</p>
+
+<ul>
+	<li><code>/servers/gateway/handlers/sessionstate.go</code>: where you will declare your session state struct</li>
+	<li><code>/servers/gateway/handlers/context.go</code>: where you will declare your handler context struct</li>
+	<li><code>/servers/gateway/handlers/auth.go</code>: where you will implement the handlers for sign-up/in/out and user profile update</li>
+	<li><code>/servers/gateway/handlers/cors.go</code>: where you will implement the CORS middleware handler</li>
+</ul>
+
+<h2>SessionState Struct</h2>
+
+<p>The sessions package you implemented in the last assignment saves any sort of sessions state the caller wants to use. It's now time to define the session state struct for our web server.</p>
+
+<p>In the <code>/servers/gateway/handlers/sessionstate.go</code> file, define a struct with fields capable of tracking the following information:</p>
+
+<ul>
+	<li>The <a href="https://golang.org/pkg/time/#Time">time</a> at which this session began</li>
+	<li>The authenticated <code>users.User</code> who started the session</li>
+</ul>
+
+<p>Remember that this struct will be marshaled to JSON by your session store, so <a href="https://drstearns.github.io/tutorials/gojson/#secfieldsmustbeexportedtobeencoded"><strong>ensure the fields of your struct will be visible to the JSON encoder</strong></a>.</p>
+
+<p>That's all we need for now, but you can add other fields to this struct in the future to capture and track other data about the session.</p>
+
+
+
+<h2>Handler Context Struct</h2>
+
+<p>Your handlers will need access to an initialized <code>sessions.Store</code> and <code>users.Store</code>, as well as the session signing key. As discussed in the <a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Globals with Go Handlers</a> tutorial, the best way to share these values with your handlers is to add a receiver to the handler functions that need these values. The receiver is a pointer to a struct that has a field for each of the global values you need to share.</p>
+
+<p>In the <code>/servers/gateway/handlers/context.go</code> file, define a handler context struct with fields that capture the following information:</p>
+
+<ul>
+	<li>The key used to sign and validate SessionIDs</li>
+	<li>The <code>sessions.Store</code> to use when getting or saving session state</li>
+	<li>The <code>users.Store</code> to use when finding or saving user profiles</li>
+</ul>
+
+
+
+<h2>Handlers</h2>
+
+<p>In the <code>/servers/gateway/handlers/auth.go</code> file, implement the following HTTP handler functions. Remember to add the struct you defined in the <code>context.go</code> file as a receiver on all of these handler functions.</p>
+
+<h3>UsersHandler()</h3>
+
+<p>This function handles requests for the "users" resource. For now we will accept <code>POST</code> requests to create new user accounts, but in the next assignment, this will be extended to also handle <code>GET</code> requests for searching users.</p>
+
+<p>If the request method is <code>POST</code>:</p>
+
+<ul>
+	<li>If the request's <code>Content-Type</code> header does not start with <code>application/json</code>, respond with status code <code>http.StatusUnsupportedMediaType</code> (415), and a message indicating that the request body must be in JSON.</li>
+
+	<li>The request body should contain JSON that can be decoded into the <code>users.NewUser</code> struct. Ensure the data is valid and create a new user account in the database.</li>
+
+	<li>Begin a new session for the new user.</li>
+
+	<li>Respond to the client with:
+		<ul>
+			<li>a status code of <code>http.StatusCreated</code> (201) to indicate that a new resource was created.</li>
+
+			<li>a response <code>Content-Type</code> header set to <code>application/json</code> to indicate that the response body is encoded as JSON.</li>
+
+			<li>the new user profile in the response body, encoded as a JSON object. Ensure that the <code>id</code> property contains the new database-assigned primary key value. The "json" field tags provided for you on the User struct will ensure that the <code>PassHash</code> and <code>Email</code> fields are <strong>not included</strong> in the response JSON (we never want to reveal those to clients).</li>
+		</ul>
+
+	 </li>
+</ul>
+
+
+<p>For any other HTTP method, respond with an <code>http.StatusMethodNotAllowed</code> (405) error.</p>
+
+
+
+<h3>SpecificUserHandler()</h3>
+
+<p>This function handles requests for a specific user. The resource path will be <code>/v1/users/{UserID}</code>, where <code>{UserID}</code> will be the user's ID. As a convenience, clients can also use the literal string <code>me</code> to refer to the UserID of the currently-authenticated user. So <code>/v1/users/me</code> refers to the currently-authenticated user, and <code>/v1/users/1234</code> refers to the user with the ID <code>1234</code> (which could be the same user).</p>
+
+<p>The current user must be authenticated to call this handler regardless of HTTP method. If the user is not authenticated, respond immediately with an <code>http.StatusUnauthorized</code> (401) error status code</p>
+
+<p>If the request method is <code>GET</code>:</p>
+
+<ul>
+	<li>Get the user profile associated with the requested user ID from your store.</li>
+
+	<li>If no user is found with that ID, respond with an <code>http.StatusNotFound</code> (404) status code, and a suitable message.</li>
+
+	<li>Otherwise, respond to the client with:
+		<ul>
+			<li>a status code of <code>http.StatusOK</code> (200).</li>
+
+			<li>a response <code>Content-Type</code> header set to <code>application/json</code> to indicate that the response body is encoded as JSON</li>
+
+			<li>the <code>users.User</code> struct returned by your store in the response body, encoded as a JSON object.</li>
+		</ul>
+
+	</li>
+
+</ul>
+
+<p>If the request method is <code>PATCH</code>:</p>
+
+<ul>
+	<li>If the user ID in the request URL is not "me" or does not match the currently-authenticated user, immediately respond with an <code>http.StatusForbidden</code> (403) error status code and appropriate error message.</li>
+
+	<li>If the request's <code>Content-Type</code> header does not start with <code>application/json</code>, respond with status code <code>http.StatusUnsupportedMediaType</code> (415), and a message indicating that the request body must be in JSON.</li>
+
+	<li>The request body should contain JSON that can be decoded into the <code>users.Updates</code> struct. Use that to update the user's profile.</li>
+
+	<li>Respond to the client with:
+		<ul>
+			<li>a status code of <code>http.StatusOK</code> (200).</li>
+
+			<li>a response <code>Content-Type</code> header set to <code>application/json</code> to indicate that the response body is encoded as JSON.</li>
+
+			<li>a full copy of the updated user profile in the response body, encoded as a JSON object.</li>
+		</ul>
+
+	 </li>
+</ul>
+
+<p>For any other HTTP method, respond with an <code>http.StatusMethodNotAllowed</code> (405) error.</p>
+
+
+
+
+<h3>SessionsHandler()</h3>
+
+<p>This function handles requests for the "sessions" resource, and allows clients to begin a new session using an existing user's credentials.</p>
+
+<p>If the method is <code>POST</code>, follow these steps:</p>
+
+<ul>
+	<li>If the request's <code>Content-Type</code> header does not start with <code>application/json</code>, respond with status code <code>http.StatusUnsupportedMediaType</code> (415), and a message indicating that the request body must be in JSON.</li>
+
+	<li>The request body should contain JSON that can be decoded into a <code>users.Credentials</code> struct. Use those credentials to find the user profile and authenticate. If you don't find the user profile, do something that would take about the same amount of time as authenticating, and then respond with a <code>http.StatusUnauthorized</code> error status code and generic message "invalid credentials". Respond with the same error if you find the profile but fail to authenticate.</li>
+
+	<li>If authentication is successful, begin a new session.</li>
+
+	<li>Respond to the client with:
+		<ul>
+			<li>a status code of <code>http.StatusCreated</code> (201) to indicate that a new resource was created.</li>
+
+			<li>a response <code>Content-Type</code> header set to <code>application/json</code> to indicate that the response body is encoded as JSON.</li>
+
+			<li>a copy of the user's profile in the response body, encoded as a JSON object.</li>
+		 </ul> 
+	</li>
+</ul>
+
+<p>For any other HTTP method, respond with an <code>http.StatusMethodNotAllowed</code> (405) error.</p>
+
+
+
+
+<h3>SpecificSessionHandler()</h3>
+
+<p>This function handles requests related to a specific authenticated session. For now, the only operation we will support is ending the current user's session. But this could be expanded to allow administrators to end sessions started by other users that have gone rogue. The resource path for the current user's session will be <code>/v1/sessions/mine</code>.</p>
+
+<p>If the method is <code>DELETE</code>, follow these steps:</p>
+
+<ul>
+	<li>If the last path segment does not equal <code>"mine"</code>, immediately respond with an <code>http.StatusForbidden</code> (403) error status code and appropriate error message.</li>
+
+	<li>End the current session.</li>
+
+	<li>Respond with the plain text message "signed out"</li>
+</ul>
+
+<p>For any other HTTP method, respond with an <code>http.StatusMethodNotAllowed</code> (405) error.</p>
+
+
+<h2>Handler Automated Tests</h2>
+
+<p>Create a new file next to <code>auth.go</code> named <code>auth_test.go</code>. In that file write <a href="http://blog.questionable.services/article/testing-http-handlers-go/">automated tests for your new handler functions</a>. Remember to test not only correct inputs, but also incorrect inputs. Check not only the response body, but also the response status code and headers. Ensure that your handlers do the right thing in all cases.</p>
+
+
+<h2>CORS Middleware</h2>
+
+<p>All of the handler functions above will need to be callable cross-origin, and most of them will generate pre-flight requests, as described in the <a href="https://drstearns.github.io/tutorials/cors/">CORS tutorial</a>. Instead of adding all of that code to all of your handler functions, create a CORS middleware handler that wraps these other handler functions as you add them to a mux. Implement this in the <code>/servers/gateway/handlers/cors.go</code> file.</p>
+
+<p>To verify that your middleware handler is working correctly, create a new file at <code>/servers/gateway/handlers/cors_test.go</code>, and write automated tests for your new CORS middleware handler.</p>
+
+
+
+<h2>Wire It All Up in main()</h2>
+
+<p>You've now built all of the pieces, so it's time to wire them all up in your server's <code>main()</code> function.</p>
+
+<p>Read the following new environment variables:</p>
+
+<ul>
+	<li><code>SESSIONKEY</code>: a string to use when signing and validating SessionIDs</li>
+	<li><code>REDISADDR</code>: the address of your redis session store server</li>
+	<li><code>DSN</code>: the full data source name to pass as the second parameter to <code>sql.Open()</code></li>
+</ul>
+
+<p>Use the <code>REDISADDR</code> to create a <a href="https://godoc.org/github.com/go-redis/redis#NewClient">new redis Client</a>, which you can pass to your <code>sessions.NewRedisStore()</code> function.</p>
+
+<p>Use the <code>DSN</code> to <a href="https://golang.org/pkg/database/sql/#Open">open your SQL database</a> and initialize your user store. The value you set this to will obviously depend on what RDBMS you are using, and what you use for the root user password.</p>
+
+<p>Create and initialize a new instance of your handler context struct with the signing key, the session store, and the user store.</p>
+
+<p><a href="https://golang.org/pkg/net/http/#NewServeMux">Create a new mux</a>, and add your new handlers to it using the following URLs:</p>
+
+<ul>
+	<li><code>/v1/users</code>: UsersHandler</li>
+	<li><code>/v1/users/</code>: SpecificUserHandler</li>
+	<li><code>/v1/sessions</code>: SessionsHandler</li>
+	<li><code>/v1/sessions/</code>: SpecificSessionHandler</li>
+</ul>
+
+<p>Finally, wrap this new mux with your CORS middleware handler and add that to the main server mux.</p>
+
+<p>If you did everything correctly, you should now be able to start your API server and try the new APIs interactively via a tool like <a href="https://www.getpostman.com/">Postman</a>. Or if you think GUIs are for wimps, <a href="https://curl.haxx.se/docs/manpage.html">use curl instead!</a></p>
+
+
+
+<h2>Build Your Web Client</h2>
+
+<p>Now that your server supports these new APIs, it's time to build a new web client that lets users sign-up, sign-in, sign-out, and update their own user profile.</p>
+
+<p>You can use whatever client-side framework you want, or just keep it simple and use only the DOM. We won't grade your client-side code style nor the UX, so feel free to keep it simple and ugly so that you have more time to spend on the server-side pieces.</p>
+
+<p>Add your web client files to the <code>/clients/messages</code> directory. This new client must meet the following functional requirements:</p>
+
+<ul>
+	<li>All errors returned from your APIs must be shown to the user. You can write the error to the console, but you must also show it to the user via some sort of UI element. Using <code>alert()</code> is OK, but not elegant.</li>
+
+	<li>The user must be able to sign-up for a new account, or sign-in to an existing account.</li>
+
+	<li>The sign-up form must allow the user to enter the fields required by the <code>users.NewUser</code> struct: email address, user name, first name, last name, password, and password confirmation. Use <code>&lt;input type="password"&gt;</code> for the password and password confirmation fields so that the browser doesn't show the password characters as they are typed.</li>
+
+	<li>The sign-in form must allow the user to enter the fields required by the <code>users.Credentials</code> struct: email address and password.</li>
+
+	<li>When the user attempts to sign-up or sign-in, prevent the browser's default form submission behavior and use AJAX to POST the new user or credentials data as a JSON object to the appropriate API (<code>/v1/users</code> for sign-up <code>/v1/sessions</code> for sign-in.)</li>
+
+	<li>If you get a successful response (status code &lt; 300), save the contents of the <code>Authorization</code> response header to <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage">local storage</a>. Send this value in the <code>Authorization</code> request header with every subsequent AJAX request you send to your API server.</li>
+
+	<li>After successfully authenticating, the user must be shown a view that displays the user's first and last name, and allows the user to sign-out. This will eventually become the main view where users read messages posted by others, and post new messages. If the user is not authenticated but attempts to see this view by manipulating the URL in the address bar, your client must prohibit this and take the user back to the sign-in view.</li>
+
+	<li>When the user signs-out, use AJAX to send a <code>DELETE</code> request to <code>/v1/sessions/mine</code>. If you get a successful response, delete the <code>Authorization</code> token you previously stored in local storage, and return to the sign-in view.</li>
+
+	<li>This view must also provide some UI element that takes the user to another view to update the user profile. This view should let the user update the first and last name fields only. Use AJAX to send a <code>PATCH</code> request to your <code>/v1/users/me</code> API, including those updates a JSON object in the request body. After successfully updating, return the user to the main view, and ensure that the user's first/last names reflect the updates that just occurred.</li>
+</ul>
+
+
+
+
+
+<h2>Rebuild Docker Container Images and Redeploy</h2>
+
+<p>Since you've modified your API server, rebuild your Docker container image for it, and re-deploy that updated container image to your API server VM.</p>
+
+<p>Create a new <code>Dockerfile</code> for your new web client, similar to the one you created for your summary web client. Build a container image for your new web client and push it to Docker Hub. Stop and remove the summary client container on your web client VM, and run this new container image instead.</p>
+
+<p>Ensure that your web client and server are working as expected.</p>
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<p>Run <code>go test ./...</code> from the repo's root directory to ensure that all of your automated tests are still passing, and then commit all of your changes to the <code>auth</code> branch. Then push those to GitHub and create a pull request to merge all commits you've made to the <code>auth</code> branch into the <code>master</code> branch. Finally, submit a link to your pull request via this assignment, and <strong>include a link to your deployed API gateway server in the submission comments</strong>.</p>
+
+
+
+<h2>Opportunities for Extra-Credit</h2>
+
+<p>Looking for some more challenge? Try one or more of the following.</p>
+
+
+<h3>Log User Sign-Ins in the Database (2 points max)</h3>
+
+<p>It's often helpful to know when and how often your users sign-in. Add another table to your RDBMS that tracks successful sign-ins using the following columns:</p>
+
+<ul>
+	<li>The UserID who signed-in.</li>
+	<li>The date/time of the sign-in.</li>
+	<li>The client IP address from which the sign-in request came. Use the <code>RemoteAddr</code> field from the <code>http.Request</code> struct to get this value. If <a href="https://stackoverflow.com/questions/27234861/correct-way-of-getting-clients-ip-addresses-from-http-request-golang">an X-Forwarded-For header</a> is included, use the first IP address in the list instead.</li>
+</ul>
+
+
+<h3>Allow Upload of Custom Profile Photo (5 points max)</h3>
+
+<p>Gravatar is handy, but it requires users to setup a Gravatar account, which they might be reluctant to do. Add a feature that allows users to upload a profile photo directly to your system. You will need to do the following:</p>
+
+<ul>
+	<li>Add a handler for the resource path <code>/v1/users/{UserID|me}/avatar</code>, where <code>{UserID|me}</code> can be either a user ID or the literal string "me".</li>
+
+	<li>This new handler requires authentication. If the current user is not authenticated respond immediately with an <code>http.StatusUnauthorized</code> error status code.</li>
+
+	<li>If the method is <code>PUT</code>, ensure that the user ID in the request resource path is "me" or matches the currently authenticated user's ID. If not, respond with an <code>http.StatusForbidden</code> error status code. Otherwise, <a href="https://astaxie.gitbooks.io/build-web-application-with-golang/en/04.5.html">recevie the image file that was sent in the request body</a>, and save it to some directory in the file system, using the user's ID as the base file name (e.g., "1234.png"). Finally, update the user's photoURL in the database to be <code>/v1/users/{UserID}/avatar</code>, where <code>{UserID}</code> is replaced with the user's ID.</li>
+
+	<li>If the method is <code>GET</code>, <a href="https://golang.org/pkg/net/http/#ServeFile">serve the previously-saved image file to the response</a>. If the file is not found, respond with a <code>http.StatusNotFound</code> (404) error status code.</li>
+
+	<li>Add the necessary code to your web client to let users choose and upload a profile photo to this new API.</li>
+
+</ul>
+
+
+
+
+<h3>Block Repeated Failed Sign-Ins (5 points max)</h3>
+
+<p>Most authentication systems will lock an account for a short period of time after several failed sign-in attempts. Use your Redis database to track how many failed sign-in attempts you've received for a given email address, and if you receive more than five, immediately reject subsequent sign-in requests for ten minutes. Remember to reset the failed count after a successful sign-in!</p>
+
+
+<h3>Password Reset (7 points max)</h3>
+
+<p>Users sometimes forget their passwords and need to reset them. The current standard practice is to send the user a link via their registered email address that can be used to reset their password. The link contains a one-time use code that is associated with the account so that it can't be used to reset passwords of other accounts.</p>
+
+<p>Enable password resets by doing the following:</p>
+
+<ul>
+	<li>Add the following APIs:
+		<ul>
+			<li><code>POST /v1/resetcodes</code>: accepts a JSON-encoded object containing the user's email address. If this matches an existing user account, send an email to that address that contains a link with a one-time use code that expires after 5 minutes. You can use whatever technique you want to create this code (base64-encoded crypto-random bytes is fine). The code must be associated with the user account, and once it is used or expires, it should not be usable again. If successful, this API should respond with a simple confirmation message like "password reset link sent."</li>
+
+			<li><code>PUT /v1/passwords/<em>email-address</em></code>: accepts a JSON-encoded object containing the one-time use reset code obtained from the previous API, a new password, and a confirmation of that new password. Use the email-address from the URL to find the user account in the database. If the reset code is valid for that user, and if the new password and password confirmation fields match,  reset the user's password. Respond with a simple confirmation message. It's up to you if you want to automatically start a new authenticated session after a successful password reset: some systems do that, but others make the user explicitly sign-in using the new password, just to reinforce it.</li>
+		</ul>
+	</li>
+
+	<li>Add the following functionality to your web client that uses those new APIs:
+		<ul>
+			<li>Some UI element on the sign-in view that can be used to request a password reset. This should make a request to your <code>POST /v1/resetcodes</code> API, which will in turn generate a code and send a link to the registered email address.</li>
+
+			<li>The URL in the email should take the user to a new password reset view in your web client. After entering a new password and password confirmation, your view should make a request to your <code>PUT /v1/passwords/<em>email-address</em></code> API, passing the required information in the request body. If you get a successful responses, redirect the user to the appropriate web client view (sign-in or the main messages view), depending on whether you started a new authenticated session or not.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+<h3>Support Two-Factor Authentication (10 points max)</h3>
+
+<p>A password is only one-factor authentication: something you know. A much stronger authentication system adds a second factor: something you have, such as a mobile phone. The easiest way to enable this is to implement the <a href="https://tools.ietf.org/html/rfc6238">OAUTH-TOTP algorithm</a>, which requires users to enter a time-based, one-time-use authentication code that is generated from a mobile phone app like the Google Authenticator (<a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>, <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en">Android</a>).</p>
+
+<p>Use the <a href="https://github.com/sec51/twofactor">github.com/sec51/twofactor</a> library to support 2FA with the OAUTH-TOTP algorithm. The library can generate the QR code needed by the Google Authenticator, which your web client will need to show. Store the key with the user data in your persistent store, and use that to validate the Google Authenticator token. You'll also need to add something to your SessionState struct to track whether a valid TOTP code has been presented or not, and deny access to protected resources until it has been.</p>
+
+
+

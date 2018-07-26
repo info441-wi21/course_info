@@ -1,0 +1,223 @@
+<p>Before you learn to run, you need to learn to walk. For this challenge, you'll build a simple web service in Go that summarizes the meta data in a web page, including any <a href="http://ogp.me/">Open Graph</a> properties that are included. This is what Facebook and other social media sites use when they show a summary of an article you post. Because web browsers block AJAX requests for cross-origin URLs, you can't do this directly from client-side JavaScript. Instead, you must use some server-side code.</p>
+
+<p>By implementing this, you'll demonstrate your understanding of HTTP, the Go programming language and tools, HTML tokenizing, and JSON encoding. You'll also be able to test your solution using some automated tests we've provided for you.</p>
+
+<h2>Helpful Resources</h2>
+
+<p>These resources will help you complete this challenge. If you haven't read them yet, now is a good time to do that:</p>
+
+<ul>
+	<li><a href="https://drstearns.github.io/tutorials/http/">The HyperText Transfer Protocol</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/env/">Environment Variables</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams in Go</a></li>
+</ul>
+
+<h2>Create Your Repository</h2>
+
+<p>Use the following GitHub Classroom link to create a new private repo within our organization. <strong>DO NOT FORK THE REPO CREATED BY GITHUB CLASSROOM!</strong> The repo created by GitHub Classroom will be private to you, and will contain all of the starter code you'll need.</p>
+
+<blockquote><a href="https://classroom.github.com/a/zU_WJa1Y">https://classroom.github.com/a/zU_WJa1Y</a></blockquote>
+
+<p>After the repo is created and populated, clone the repo to your development machine. You should already know how to do that, but in case your git skills are rusty, see my <a href="https://faculty.washington.edu/dlsinfo/tutorials/essential-git/">Essential Git Tutorial</a>.</p>
+
+<h2>Checkout the Summary Branch</h2>
+
+<p>For each challenge, we want you to make all of your commits to a separate challenge-specific branch. When you're all done, you'll create a pull request to merge those commits from the challenge branch into the <code>master</code> branch. We will use that pull request to add detailed, in-line comments to your code.</p>
+
+<p>For this challenge, the branch name is <code>summary</code>. It should already exist in your repo, and should already contain the starter code for this challenge. To switch to this branch, use the command:</p>
+
+<pre><code>git checkout summary</code></pre>
+
+<p>This should cause the following new files to appear in your repo directory:</p>
+
+<ul>
+	<li><code>servers/gateway/main.go</code> main entry point for your API web server</li>
+	<li><code>servers/gateway/handlers/summary.go</code> the page summary API handler function</li>
+	<li><code>servers/gateway/handlers/summary_test.go</code> automated tests for the functions in <code>summary.go</code></li>
+</ul>
+
+<h2>Implement the Main Function</h2>
+
+<p>All Go programs start by calling your <code>main()</code> function declared in package <code>main</code>. This function has already been declared for you in the <code>servers/gateway/main.go</code> file. Implement the <code>main()</code> function as directed by the comments.</p>
+
+<p>This main function should start a web server that exposes one API path: <code>/v1/summary</code>. Clients will be able to request this path passing another URL in the <code>url</code> query string parameter. Your API will respond with the page summary meta-data for that URL, encoded as a JSON object. This API should also include the appropriate header to tell the client that the data is encoded as JSON.</p>
+
+
+
+<h2>Implement The SummaryHandler and Related Functions</h2>
+
+<p>Your web server will call the <code>handlers.SummaryHandler()</code> function when a client requests the API path <code>/v1/summary</code>, so now it's time to implement that handler function, as well as the other functions it will call. Open the <code>servers/gateway/handlers/summary.go</code> file and implement the <code>SummaryHandler()</code>, <code>fetchHTML()</code>, and <code>extractSummary()</code> functions. Feel free to add other functions to this file, but don't remove the three that are there: they are called by the automated tests in <code>servers/gateway/handlers/summary_test.go</code>. Follow the instructions in the comments, and use the helpful links for reference.</p>
+
+<p>If your <code>fetchHTML()</code> function returns an error, that's not your fault, so respond with a status code that indicates the client made a bad request. If your <code>extractSummary()</code> function returns an error, that's probably your fault, so respond with a status code that indicates your server generated an unexpected error.</p>
+
+<p>The <code>extractSummary()</code> function should tokenize the HTML stream you get back from <code>fetchHTML()</code> and extract the page summary meta-data. Use the PageSummary struct defined at the top of the file to hold the meta-data. You should populate the fields as follows:</p>
+
+<table class="ic-Table ic-Table--striped">
+	<thead>
+		<tr>
+			<th>Struct Field</th>
+			<th>Where to Get the Value</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Type</td>
+			<td>The value of the <code>content</code> attribute in the <code>&lt;meta property=&quot;og:type&quot; content=&quot;...&quot;&gt;</code> tag.</td>
+		</tr>
+		<tr>
+			<td>URL</td>
+			<td>The <code>&lt;meta property=&quot;og:url&quot; content=&quot;...&quot;&gt;</code> tag.</td>
+		</tr>
+		<tr>
+			<td>Title</td>
+			<td>The <code>&lt;meta property=&quot;og:title&quot; content=&quot;...&quot;&gt;</code> tag, or the content within the <code>&lt;title&gt;...&lt;/title&gt;</code> element if no Open Graph title is provided in the page.</td>
+		</tr>
+		<tr>
+			<td>SiteName</td>
+			<td>The <code>&lt;meta property=&quot;og:site_name&quot; content=&quot;...&quot;&gt;</code> tag</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The <code>&lt;meta property=&quot;og:description&quot; content=&quot;...&quot;&gt;</code> tag, or the <code>&lt;meta name=&quot;description&quot; content=&quot;...&quot;&gt;</code> tag if the Open Graph description is not provided in the page.</td>
+		</tr>
+		<tr>
+			<td>Author</td>
+			<td>The <code>&lt;meta name=&quot;author&quot; content=&quot;...&quot;&gt;</code> tag. This tag is defined in the HTML spec, not Open Graph, so the other attribute is named <code>name</code> (as opposed to <code>property</code>) and the value is just <code>"author"</code> and not <code>"og:author"</code>.</td>
+		</tr>
+		<tr>
+			<td>Keywords</td>
+			<td>The <code>&lt;meta name=&quot;keywords&quot; content=&quot;keyword1, keyword1, keyword3, ...&quot;&gt;</code>. Note that the <code>content</code> property can contain a comma-delimited list of keywords, and the Keywords struct field is a slice of strings. The slice should contain one element for each keyword in the list, and you should trim off any leading/trailing spaces from each keyword before adding it to the slice.</td>
+		</tr>
+		<tr>
+			<td>Icon</td>
+			<td>Use the <code>&lt;link rel=&quot;icon&quot; href=&quot;...&quot; sizes=&quot;...&quot; type=&quot;...&quot;&gt;</code> tag to populate a <code>PreviewImage</code> struct for this field. Note that the <code>link</code> tag is used for several different kinds of related meta-data, so only use the <code>&lt;link rel=&quot;icon&quot;&gt;</code> tag. For icons, this tag may contain <code>href</code>, <code>sizes</code>, and <code>type</code> attributes, but only the <code>href</code> attribute is required. For details about what these attributes may contain, see the <a href="https://www.w3schools.com/tags/tag_link.asp">link tag reference page</a>. If there are multiple of these link tags in the page, just use the last one you encounter while tokenizing the page.</td>
+		</tr>
+		<tr>
+			<td>Images</td>
+			<td>This is a slice that should contain one <code>PreviewImage</code> struct instance for each Open Graph image found in the page. The Open Graph spec allows for <a href="http://ogp.me/#array">multiple preview images to be declared in a single page</a>. Open Graph images start with a <code>&lt;meta property=&quot;og:image&quot; content=&quot;...&quot;&gt;</code> tag, but may also be followed by additional tags containing other properties about that image. See the <a href="http://ogp.me/#structured">Structured Properties section</a> of the Open Graph specification for more details and examples. If the URL in the <code>content</code> attribute is a relative URL, your code must convert that to an absolute URL before adding it to the <code>PreviewImage</code> struct.</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>Note that all fields are populated by elements within the <code>&lt;head&gt; ... &lt;/head&gt;</code> section of the page, so you can stop tokenizing after you encounter the <code>&lt;/head&gt;</code> tag.</p>
+
+<p>Also note that <strong>HTML elements and attributes can appear in any order</strong>. The meta-data elements in the head section can appear in any order, and attributes within the start tag can be in any order.</p>
+
+<p class="alert"><strong>DO NOT use an existing Open Graph parsing library</strong>: those libraries don't do all the features I'm requiring here, and you won't learn anything about tokenizing if you don't do the work yourself. Similarly, <strong>do not use a library that parses the entire page into a DOM tree</strong>: that approach is far less efficient both in terms of space and time than tokenizing, and in a scalable web server, efficiency matters. The only libraries you are allowed to use for this assignment are the Go standard library and the golang.org/x/net/html tokenizing library.</p>
+
+
+<h2>Run Tests</h2>
+
+<p>You can verify your implementation of the <code>extractSummary()</code> and <code>fetchHTML()</code> functions by running the automated tests in the <code>servers/gateway/handlers/summary_test.go</code> file. To run them, execute this command from within the <code>servers/gateway/handlers</code> directory:</p>
+
+<pre><code>go test</code></pre>
+
+<p>To run a specific test function use the <code>-run</code> flag:</p>
+
+<pre><code>go test -run TestExtractSummary</code></pre>
+
+<p>Note that the run flag accepts a <a href="http://www.regular-expressions.info/tutorial.html">regular expression</a>, so you can use that to run a specific subset of tests that match your regex.</p>
+
+<p>To run all tests in the current directory and all directories below it, use this command:</p>
+
+<pre><code>go test ./...</code></pre>
+
+<p>If all the tests pass, you're "good to go" (there will be many "go" puns this quarter). If not, look at the error messages and line numbers to see exactly where and why the tests failed.</p>
+
+<p>We will grade your functionality by running these tests, so ensure they are passing before you submit.</p>
+
+<p class="alert"><strong>Note:</strong> these tests use <code>reflect.DeepEqual()</code> to compare the struct you return from <code>extractSummary()</code> against an expected struct. That function considers a non-nil but empty slice to be different than a nil slice. Since you can pass a nil slice to the <code>append()</code> function, you don't need to initialize the slice fields to a non-nil empty slice: just let them initialize to the zero-value for slices, which is nil. This saves an unnecessary memory allocation.</p>
+
+
+<h2>Try Your Server</h2>
+
+<p>After you coding is all done, execute this command from within the <code>servers/gateway</code> directory to build and install your server to the <code>$GOPATH/bin</code> directory:</p>
+
+<pre><code>go install</code></pre>
+
+<p>If you don't see any errors, it worked, and you should have a new executable in the <code>$GOPATH/bin</code> directory named <code>gateway</code> on Mac/Linux, or <code>gateway.exe</code> on Windows.</p>
+
+<p>Before running your server, set the <code>ADDR</code> environment variable to an address your user account can listen on:</p>
+
+<pre><code>export ADDR=localhost:4000</code></pre>
+
+<p>Your server reads this environment variable at the start of the <code>main()</code> function to know which host and port to listen on. Although production HTTP servers listen on port 80, you can't bind to that port on most systems while running as a non-root user. On Unix-based systems, only the root user is allowed to listen on "low" ports (&lt;1024), so while doing development, it's customary to run your server on a higher port number.</p>
+
+<p>If you added <code>$GOPATH/bin</code> to your system path, you should be able to run your server by simply typing the name of the executable and hitting Enter (<code>gateway</code> on Mac/Linux; <code>gateway.exe</code> on Windows). If you didn't add <code>$GOPATH/bin</code> to your path, prefix the executable name with <code>$GOPATH/bin/</code>.</p>
+
+<p>Once your server is running, you should be able to test your API route in the browser. For example, click this URL to see a summary of the Open Graph home page (adjust the port number if you started your server on a port other than 4000).</p>
+
+<p><a target="_blank" href="http://localhost:4000/v1/summary?url=http://ogp.me/">http://localhost:4000/v1/summary?url=http://ogp.me/</a></p>
+
+<p>If all is working, you should see a JSON-encoded object containing the page summary meta-data for the specified URL in the <code>url</code> query string property.</p>
+
+
+
+
+<h2>Build a Simple Web Client</h2>
+
+<p>To see your API in action, build a simple web client in the <code>clients/summary</code> directory. This doesn't need to be fancy or use sophisticated frameworks unless you really want to do so. You will build a different web client for our full messages system, so this is just a warm-up/review of the client-side techniques you already learned in INFO 343 or CSE 154.</p>
+
+<p>Your client needs to meet the following requirements:</p>
+
+<ul>
+	<li>The user must be able to enter a web page URL, and then click/tap something to request a summary.</li>
+	
+	<li>When the user requests the summary, your client-side JavaScript must make an AJAX request to your API Server's <code>/v1/summary</code> API. Remember that your API Server is running on <code>http://localhost:4000</code>. The response will be a JSON object.</li>
+	
+	<li>When the server responds, your client-side JavaScript must render the summary data to the page as HTML elements. You must render at least the <code>title</code> and <code>description</code> properties in the returned JSON, as well as all the images in the <code>images</code> array. When rendering those images, you must render them using <code>&lt;img src=&quot;...&quot;&gt;</code> elements, putting the image's URL into the element's <code>src</code> attribute.</li>
+
+	<li>Remember that for some pages, some of these properties will be missing, so handle that condition gracefully.</li>
+
+	<li>Any errors returned by your API should be communicated to the user (i.e., actually show the error message to the user, don't just write it to the console).</li>
+
+</ul>
+
+<p>You can use whatever styling and layout you want, but again, keep this simple. The main point is to review/practice making AJAX requests to an API server and processing the responses.</p>
+
+
+
+
+<h2>Commit, Push, and Submit</h2>
+
+<p>Before you submit, ensure that you've committed all of your changes to the <code>summary</code> branch, and push that branch up to GitHub. Then <a href="https://help.github.com/articles/creating-a-pull-request/">create a pull request</a> to merge the commits from your <code>summary</code> branch into your repo's <code>master</code> branch. <strong>DO NOT</strong> merge this pull request yourself. Instead, <strong>submit a link to this pull request</strong> via this assignment. We will use that pull request to add detailed in-line comments to your code. When we are done, we will merge your pull request and you can pull those merged commits into your local repo using the <code>git pull</code> command.</p>
+
+
+
+
+<h2>Advanced Extra Credit Opportunities</h2>
+
+<p>If you got through the requirements above and want some extra challenge, give these advanced extra-credit requirements a try. You will receive extra credit points based on the difficulty of the requirement and the quality of your implementation.</p>
+
+
+
+<h3>Add Open Graph Preview Videos (3 points max)</h3>
+
+<p>Just like preview images, the Open Graph schema supports <a href="http://ogp.me/#structured">preview videos</a>. The meta property names start with <code>og:video</code>, and sites like YouTube add these to their video pages.</p>
+
+<p>Add support for this by defining a new <code>PreviewVideo</code> struct with the appropriate fields, and adding a new field to the <code>PageSummary</code> struct which is slice of PreviewVideo structs.</p>
+
+<p>Also incorporate this new meta-data into your web client. If there are preview videos, look at each video's <code>type</code> to determine how to show it. If the type is <code>text/html</code>, use an <code>&lt;iframe src=&quot;&quot;&gt;&lt;/iframe&gt;</code> element. If the type starts with <code>video/</code> you can try rendering a <code>&lt;video src=&quot;&quot;&gt;&lt;/video&gt;</code> element instead (though not all browsers can play all video types).</p>
+
+
+
+<h3>Fall Back to Twitter Card Meta-Data (2 points max)</h3>
+
+<p>Open Graph was defined by Facebook, but they were not the only social media company to define an enhanced HTML meta-data schema. Twitter uses their own <a href="https://dev.twitter.com/cards/markup">"Twitter Card" schema</a> that defines different property names, though many are equivalent to the Open Graph properties.</p>
+
+<p>For this feature, fall back to the following Twitter card properties if the Open Graph properties are not defined (i.e., the Open Graph properties should take precedence over the Twitter Card properties). For images, add them to the slice only if the slice doesn't contain an element for that same image URL.</p>
+
+<ul>
+	<li><code>twitter:card</code>: equivalent to <code>og:type</code></li>
+	<li><code>twitter:description</code>: equivalent to <code>og:description</code></li>	
+	<li><code>twitter:title</code>: equivalent to <code>og:title</code></li>
+	<li><code>twitter:image</code>: equivalent to <code>og:image</code></li>
+</ul>
+
+

@@ -1,0 +1,136 @@
+<p>In the previous assignment you made it possible for clients to create channels and post messages, but other clients won't see those changes until they query your API again. In this challenge you'll implement support for WebSockets, which let your server send notifications to all clients whenever something important happens.</p>
+
+<p>Since the WebSocket connections will be handled in the gateway, but the events that trigger these notifications happen within your microservices, we will use a <a href="https://www.rabbitmq.com/">message queue server</a> to coordinate the communication. Whenever a microservice wants to notify clients, it will write an event to the message queue. The gateway will monitor the queue, and as it reads new events, the gateway will dispatch those events to the clients via their WebSocket connections.</p>
+
+
+
+<h2>Helpful Resources</h2>
+
+<p>The following resources will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="http://godoc.org/github.com/gorilla/websocket">Gorilla Toolkit WebSockets package</a></li>
+	<li><a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ tutorial for Go</a></li>
+	<li><a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ tutorial for Node.js</a></li>
+	<li><a href="https://www.rabbitmq.com/tutorials/tutorial-one-java.html">RabbitMQ tutorial for Java</a></li>
+	<li><a href="https://www.rabbitmq.com/tutorials/tutorial-one-python.html">RabbitMQ tutorial for Python</a></li>
+</ul>
+
+<h2>Checkout the Branch</h2>
+
+<p>Your challenges repo should already contain a <code>notify</code> branch. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>microservice</code> branch into the <code>notify</code> branch:</p>
+
+<pre><code>git checkout notify
+git merge microservices</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>This branch includes one new file:</p>
+
+<ul>
+	<li><code>servers/gateway/handlers/websockets.go</code>: where you'll implement support for WebSocket connections and notifications.</li>
+</ul>
+
+
+
+<h2>Add WebSocket Upgrade API to Gateway</h2>
+
+<p>In the file <code>servers/gateway/handlers/websockets.go</code>, add a new handler that upgrades the connection to a WebSocket, regardless of what method is used in the request. Users must be authenticated to upgrade to a WebSocket; if you get an error when retrieving the session state, respond with an <code>http.StatusUnauthorized</code> error. Since you can't include custom headers when establishing a WebSocket connection from JavaScript, browser-based clients should include the session token in an <code>auth</code> query string parameter instead. Your sessions package should already have code that uses that query string parameter if no <code>Authorization</code> header is included in the request.</p>
+
+<p>Keep track of your active WebSocket connections, along with the authenticated user who established the WebSocket, in a data structure that is safe for concurrent access (uses mutexes or go channels). Since WebSocket upgrade requests are all processed concurrently, you may have multiple happening at the same time.</p>
+
+<p>For each new WebSocket connection, you must start another goroutine that reads incoming control messages, as described in the <a href="http://godoc.org/github.com/gorilla/websocket#hdr-Control_Messages">Gorilla WebSockets package documentation</a>. If you receive an error while reading incoming control messages, close the WebSocket and remove it from the list.</p>
+
+<p>Add this handler to your API gateway server for the resource path <code>/v1/ws</code>.</p>
+
+
+<h2>Read and Dispatch Events</h2>
+
+<p>Your gateway server should also start a new goroutine during sever startup that <a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">connects to your RabbitMQ server and reads new events from the queue</a>.</p>
+
+<p>Assume that all messages read from the queue are encoded as JSON objects. When you receive a new message from the queue, check to see if it has a <code>userIDs</code> property set to an array of numbers. If it does, broadcast the message only to the WebSockets created by users in that list. If not, broadcast the message to all the WebSockets. This will ensure that events related to private channels are sent only to the channel members.</p>
+
+
+<h2>Send Events From Your Messaging Microservice</h2>
+
+<p>In your messaging microservice, connect to your RabbitMQ server at startup, and write new JSON-encoded event objects to the queue when these APIs are requested:</p>
+
+<ul>
+	<li><code>POST /v1/channels</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "channel-new"</li>
+			<li><code>channel</code>: full copy of the new channel object, including its new ID</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+	<li><code>PATCH /v1/channels/{channelID}</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "channel-update"</li>
+			<li><code>channel</code>: full copy of the updated channel object</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+	<li><code>DELETE /v1/channels/{channelID}</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "channel-delete"</li>
+			<li><code>channelID</code>: the ID of the channel that was deleted</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+	<li><code>POST /v1/channels/{channelID}</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "message-new"</li>
+			<li><code>message</code>: full copy of the new message object, including its new ID</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+	<li><code>PATCH /v1/messages/{messageID}</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "message-update"</li>
+			<li><code>message</code>: full copy of the updated message object</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+	<li><code>DELETE /v1/messages/{messageID}</code>: write a new event object with the following fields:
+		<ul>
+			<li><code>type</code>: "message-delete"</li>
+			<li><code>messageID</code>: the ID of the message that was deleted</li>
+			<li><code>userIDs</code>: if this is a private channel, the list of channel member IDs</li>
+		</ul>
+	</li>
+</ul>
+
+<p>Note that the <code>type</code> field in these events corresponds to the <code>type</code> field recommended for <a href="http://redux.js.org/">Redux</a> actions. If you use Redux in your web client, you can simply dispatch these events to your Redux store to process them. Any React components listening to that store will be notified that the data changed, and automatically re-render themselves with the new data!</p>
+
+
+<h2>Add Channels and Messages to your Web Client</h2>
+
+<p>In your web client, add UI for displaying, creating, updating, and deleting messages and channels. Also establish a WebSocket connection to your gateway server, and respond to the events you receive, updating your UI accordingly.</p>
+
+
+
+
+<h2>Rebuild Docker Container Images and Redeploy</h2>
+
+<p>Rebuild your gateway and messaging microservice container images, and re-deploy them to your API server droplet, adding a RabbitMQ container to your Docker private network. Rebuild your web client container image and re-deploy to your web client droplet.</p>
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<ul>
+	<li>Run <code>go test ./...</code> from the <code>servers/gateway</code> directory to ensure that all of your automated tests are still passing.</li>
+
+	<li>Commit all of your changes to the <code>notify</code> branch.</li>
+
+	<li>Push the <code>notify</code> branch to GitHub and create a pull request to merge all commits you've made to the <code>notify</code> branch into the <code>master</code> branch.</li>
+
+	<li>Submit a link to that pull request, and <strong>include a link to your deployed API gateway server in the submission comments</strong>.</li>
+</ul>
+
+
+
+
+
+
+

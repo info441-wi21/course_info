@@ -1,0 +1,152 @@
+<p>Now that you know how to build and deploy a basic API server and web client, it's time to start building the pieces we will need to authenticate users. In this challenge you will implement reusable, storage-agnostic packages for managing user accounts and session state. Once you complete this challenge, you will be able to use these packages not only in the system we build for this class, but also in another project where you need to support authenticated sessions.</p>
+
+<h2>Helpful Resources</h2>
+
+<p>The following tutorials and references will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions Tutorial</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users Tutorial</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go Tutorial</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go Tutorial</a></li>
+	<li><a href="https://godoc.org/golang.org/x/crypto/bcrypt">bcrypt package documentation</a></li>
+	<li><a href="http://go-database-sql.org/">Go SQL Tutorial</a></li>
+</ul>
+
+<h2>Checkout the Branch</h2>
+
+<p>Your challenges repo should already contain a <code>sessions</code> branch with the requisite starter code. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>deploy</code> branch into the <code>sessions</code> branch:</p>
+
+<pre><code>git checkout sessions
+git merge deploy</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>There should be a few new directories in this branch, with a few starter files in each:</p>
+
+<ul>
+	<li><code>servers/gateway/sessions</code>: a reusable sessions-tracking package that provides digitally-signed session IDs, as well as two different session state stores: one backed by a simple in-memory cache, and one backed by a shared redis server.</li>
+	
+	<li><code>servers/gateway/models/users</code>: a user account model and user store interface. You will implement that interface for your chosen RDBMS.</li>
+</ul>
+
+
+
+<h2>Implement the Sessions Library</h2>
+
+<p>Within the <code>servers/gateway/sessions</code> directory implement the functions in the following files, as described in the comments:</p>
+
+<ul>
+	<li><code>sessionid.go</code>: a cryptographically-random, digitally-signed session ID. Use the various <code>crypto</code> packages in the Go standard library, as directed in the comments.</li>
+
+	<li><code>redisstore.go</code>: a session store backed by a shared <a href="https://redis.io/">redis database</a>. This implements the abstract <code>Store</code> interface that is defined in <code>store.go</code>. For reference, look at the implementation in the <code>memstore.go</code> file, which is already provided for you.</li>
+
+	<li><code>session.go</code>: a set of package-level functions for beginning sessions, getting session state from an HTTP request, and ending sessions.</li>
+</ul>
+
+<p>As you implement this, notice the architectural pattern: that abstract <code>Store</code> interface allows the code that uses this library to get, set, and delete session data without having to care where or how that data is being saved. Only your startup code (<code>main()</code> or an automated test) needs to construct one of the concrete implementations. This allows developers to use different session stores depending on their needs (e.g., the in-memory store for automated testing, or the redis-backed store for production). It also makes it possible for developers to create new <code>Store</code> implementations backed by other caching engines (e.g., <a href="https://aws.amazon.com/dynamodb/">AWS DynamoDB</a> or <a href="https://hazelcast.com/">Hazelcast</a>). You will use this same technique later in this assignment for implementing the User object store.</p>
+
+<p class="alert">Note: the automated tests in <code>redisstore_test.go</code> will use the <code>REDISADDR</code> environment variable for the redis server address. If not defined, the tests will default to a local instance of redis running on the same machine. To start a local instance of redis, use Docker to run an instance of the <a href="https://hub.docker.com/_/redis/">official redis container image</a>.</p>
+
+
+<p>To run the provided tests, execute <code>go test</code> from within the <code>server/gateway/sessions</code> directory. If the tests pass, you're good to go (gotta love those go puns). If not, fix your code until the tests pass.</p>
+
+
+
+
+<h2>Implement the User Models</h2>
+
+<p>The <code>servers/gateway/models/users/user.go</code> file contains struct definitions for users stored in the database, new users signing-up, and credentials of users signing-in. There are also several methods defined that you need to complete. Implement those methods according to the comments.</p>
+
+<p>If you want to add more fields to the NewUser and User structs, feel free to do so. For example, a mobile phone number would let you send SMS messages to users via an service like <a href="https://www.twilio.com/">Twilio</a>.</p>
+
+
+
+
+<h2>Implement User Model Tests</h2>
+
+<p>So far you've only ran automated tests that were provided for you. Now it's time to start writing your own. Add tests to the <code>servers/gateway/models/users/user_test.go</code> file that verify the following:</p>
+
+<ul>
+	<li>Test the <code>(nu *NewUser) Validate()</code> function to ensure it catches all possible validation errors, and returns no error when the new user is valid.</li>
+
+	<li>Test the <code>(nu *NewUser) ToUser()</code> function to ensure it calculates the <code>PhotoURL</code> field correctly, <a href="https://en.gravatar.com/site/implement/hash/">even when the email address has upper case letters or spaces</a>, and sets the <code>PassHash</code> field to the password hash. Since bcrypt hashes are salted with a random value, you can't anticipate what the hash should be, but you can verify the generated hash by comparing it to the original password using the bcrypt package functions.</li>
+
+	<li>Test the <code>(u *User) FullName()</code> function to verify that it returns the correct results given the various possible inputs (no FirstName, no LastName, neither field set, both fields set).</li>
+
+	<li>Test the <code>(u *User) Authenticate()</code> function to verify that authentication happens correctly for the various possible inputs (incorrect password, correct password, empty string password).</li>
+
+	<li>Test the <code>(u *User) ApplyUpdates()</code> function to ensure the user's fields are updated properly given an <code>Updates</code> struct.</li>
+
+</ul>
+
+<p>To verify that your tests are sufficient, use <code>go test -cover</code> to see what percentage of your code paths your tests cover. The percentage should be very high: at least 90% and preferably 100%. If it's not, use the features described in the <a href="https://blog.golang.org/cover">Go Test Coverage Blog Post</a> to find out what's not being covered.</p>
+
+
+
+<h2>Create Your Schema and Customized Docker RDBMS Image</h2>
+
+<p>You will need an RDBMS table to store these user accounts. As discussed in the <a href="https://drstearns.github.io/tutorials/godb/#secbootstrappingthedatabaseschema">Bootstrapping the Database Schema</a> section of the tutorial, the best way to do this is create a new Docker container image that extends the base RDBMS image with a script to automatically create your database schema on startup.</p>
+
+<p>Create a new directory in your repo at <code>servers/db/</code> and within that directory create two files:</p>
+
+<ul>
+	<li><code>schema.sql</code>: this will be your schema creation script. For now, create one table to store instances of those <code>User</code> structs defined in <code>servers/gateway/models/users/user.go</code>. Add indexes to ensure that the email and username fields are unique. For the Email and PassHash fields lookup what the maximum length of those fields need to be. Ensure you can handle usernames up to 255 characters.</li>
+
+	<li><code>Dockerfile</code>: this will define your new Docker image. Use the name of your RDBMSs base image in the <code>FROM</code> statement, and then <code>COPY</code> your <code>schema.sql</code> into the appropriate location within the image's file system.</li>
+</ul>
+
+<p>Build your new Docker container image and run an instance of it, so that you can use it while testing your concrete user store.</p>
+
+
+<h2>Implement Concrete User Store and Tests</h2>
+
+<p>The <code>servers/gateway/models/users/store.go</code> file contains an interface definition for an abstract <code>Store</code> of <code>User</code> objects. This is just like the <code>Store</code> interface in the session library. It will allow your HTTP handlers to insert, get, and update users without having to care where or how those objects are being saved.</p>
+
+<p>Create a concrete implementation of that <code>users.Store</code> interface backed by the RDBMS you want to use for this project: <a href="https://www.mysql.com/">MySQL</a>, <a href="https://www.postgresql.org/">PostgreSQL</a>, or some other RDBMS you want to use. Name the file based on the name of your chosen DBMS (e.g., <code>mysqlstore.go</code> or <code>postgresstore.go</code>).</p>
+
+<p>As you write this implementation, ensure you do the following:</p>
+
+<ul>
+	<li><strong>DO NOT use an Object-Relational Mapping (ORM) library.</strong> We want you to understand how to interact with the RDBMS at the lowest level, without relying on helper libraries. ORMs also tend to get in the way as soon as your schema gets more complicated. ORMs are for developers who never learned SQL: you learned SQL, so take advantage of that.</li>
+
+	<li>When building the necessary SQL statements, remember to use parameter markers so that you guard against <a href="https://drstearns.github.io/tutorials/godb/#secguardingagainstsqlinjectionattacks">SQL injection attacks</a>.</li>
+
+	<li>The <code>Insert()</code> method must return a copy of the <code>User</code> struct <em>with the ID field set to the <a href="https://drstearns.github.io/tutorials/godb/#secinsertingandgettingautoassignedids">database-assigned primary key value</a></em>. That way client code will know what the newly-assigned user ID is.</li>
+	
+</ul>
+
+
+<p>Then write unit tests for your concrete user store implementation in a file with the same base name plus <code>_test.go</code> (e.g., <code>mysqlstore_test.go</code>). When unit testing a store implementation like this, you are verifying that the store executes the correct SQL statements against the database. To do this without requiring a real database connection, using the <a href="https://github.com/DATA-DOG/go-sqlmock">go-sqlmock library</a>. This library allows you to verify the SQL your store executes without requiring a live database connection. This will also make it easier for us to run your tests, as we won't need your particular database engine running.</p>
+
+<p>Write unit tests for each of the functions on the <code>Store</code> interface, passing valid and invalid inputs. Use the go-sqlmock methods to trigger various kinds of DBMS errors, and ensure that your code returns those back to the caller. Use the <code>go test -cover</code> flag to verify that you have a very high code coverage, preferably 100%.</p>
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<p>Run <code>go test ./...</code> from the <code>servers/gateway</code> directory to ensure that all of your automated tests are passing, and then commit all of your changes to the <code>sessions</code> branch. Then push those to GitHub and create a pull request to merge all commits you've made to the <code>sessions</code> branch into the <code>master</code> branch. Finally, submit a link to your pull request via this assignment.</p>
+
+
+
+<h2>Opportunities for Extra-Credit</h2>
+
+<p>Looking for some more challenge? Try one or more of the following.</p>
+
+
+<h3>Use Redis Pipelining When Getting Session State (2 points max)</h3>
+
+<p>When the redis store in the sessions library retrieves session state, it must execute two different redis commands: GET (to get the session state data) and EXPIRE (to reset the expiry time). If you do these as two separate function calls on the Go redis client, you will generate two round-trips between your API server and the redis server. Although these are very quick, it would still be more efficient if we could combine those into just one round-trip.</p>
+
+<p>Redis offers a feature called <a href="https://redis.io/topics/pipelining">Pipelining</a> that you can use to execute multiple commands with just one network round-trip. Use the <a href="https://godoc.org/github.com/go-redis/redis#example-Client-Pipeline">.Pipeline()</a> method of the Go redis client to create a pipeline to execute both the Get and Expire commands in one round-trip.</p>
+
+
+
+<h3>Implement users.Store for Another RDMBS (3 points max)</h3>
+
+<p>One of the reasons we defined an interface for the user store is so we can support multiple types of RDBMSs and switch between them over time. To illustrate this, write a second implementation for a different RDBMS. Different RDBMSs handle things like primary key generation differently, and some RDBMSs offer helpful SQL DML extensions that you should take advantage of (e.g., PostgreSQL's <code>RETURNING</code> clause, which can be used to return database-default values after an insert or update).</p>
+
+
+
+
+

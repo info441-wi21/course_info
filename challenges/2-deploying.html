@@ -1,0 +1,228 @@
+<p>Now that you know how to build a simple API server in Go, the next challenge is to enable secure communications with HTTPS, Dockerize your web client and API server, and deploy those Docker containers to the cloud.</p>
+
+<p>As we discussed in class, your web client and your API server will be two separate web servers that are completely decoupled from each other. This enables your API Server to handle various kinds of clients (web, mobile, desktop, script) in the exact same way. It also gives you ultimate flexibility in how you deploy the various pieces of your system: your web client could be replicated around the world on a Content Delivery Network (CDN), while your API server can be centralized in a scalable cloud infrastructure.</p>
+
+<h2>Helpful Resources</h2>
+
+<p>The following tutorials and references will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a></li>
+	<li><a href="https://docs.docker.com/engine/reference/builder/">Dockerfile Reference</a></li>
+	<li><a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to DigitalOcean</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a></li>
+</ul>
+
+<h2>Checkout the Deploy Branch</h2>
+
+<p>Your challenges repo should already contain a <code>deploy</code> branch with the requisite starter code. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>summary</code> branch into the <code>deploy</code> branch:</p>
+
+<pre><code>git checkout deploy
+git merge summary</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>There should be two new files in this branch:</p>
+
+<ul>
+	<li><code>servers/gateway/Dockerfile</code>: a starter Dockerfile to use for Dockerizing your API server.</li>
+	<li><code>clients/summary/Dockerfile</code>: a starter Dockerfile to use for Dockerizing your summary web client.</li>
+</ul>
+
+<h2>Add HTTPS Support To Your API Server</h2>
+
+<p>Since our gateway server will eventually do user authentication, it needs to speak HTTPS so that requests and responses are encrypted. Change the code in your <code>main.go</code> file as follows:</p>
+
+<ul>
+	<li>If the ADDR environment variable is not set, default to the address ":443" instead of ":80". 443 is the standard port for HTTPS.</li>
+	<li>Read two new environment variables: TLSCERT and TLSKEY. The former should be a path to your TLS public certificate, and the latter a path to the associated private key.</li>
+	<li>If these environment variables are not set, write an error to standard out and exit the process with a non-zero code.</li>
+	<li>Otherwise, start the web server so that it responds to HTTPS requests only, passing the public certificate and private key paths you read from the environment variables.</li>
+</ul>
+
+<p>Test these changes by <a href="https://drstearns.github.io/tutorials/https/#secselfsignedcerts">generating self-signed certificates</a> and starting your server. You should be able to request the <code>/v1/summary</code> API using HTTPS instead of HTTP. Note that since you're using self-signed certificates, you will need to manually override the warning shown to you in the browser.</p>
+
+<p class="alert">If you use <a href="https://www.getpostman.com/">Postman</a> to test your API, you can <a href="https://www.getpostman.com/docs/v6/postman/launching_postman/settings">disable SSL certificate verification</a> in the preferences to make Postman accept your self-signed certs. By default, Postman will reject self-signed certificates.</p>
+
+
+
+<h2>Update your Web Client</h2>
+
+<p>Your API gateway is now only responding to HTTPS requests, so update the code in your summary web client to use <code>https://</code> instead of <code>http://</code> when calling your <code>/v1/summary</code> API.</p>
+
+
+
+<h2>Get a Domain Name</h2>
+
+<p>Obtaining a real TLS certificate requires you to associate a domain name with your production server, so you will need a valid domain name. As a student, you can get a <a href="https://nc.me/">free domain name from Namecheap</a>, or you can purchase any domain name you wish.</p>
+
+
+<h2>Create DigitalOcean Droplets or EC2 Instances</h2>
+
+<p>As discussed in class, you will deploy your web client and API gateway server on to two separate virtual machines: one for your web client, and one for your API server. You can create these either on DigitalOcean (DO) or Amazon Web Services (AWS).</p>
+
+<p>On DO, choose "Docker x.x.x-ce on 16.04" from their list of One-click apps so that Docker will be pre-installed. Use the smallest size they offer ($5/month).</p>
+
+<p>On AWS, you can use any AMI you wish, but the easiest option is to choose the base Amazon Linux AMI and <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker">install Docker on it</a>. Adjust the instance's security group so that incoming requests are allowed on port 443 (HTTPS).</p>
+
+
+
+<h2>Associate Your Domain Name with your Servers</h2>
+
+<p>Now that you have one virtual machine for your API server, and one for your web cient, the next step is to associate your domain name with the web client VM, and the <code>api.</code> subdomain with your API server VM. For example, if you domain name is <code>example.com</code>, then <code>example.com</code> should point to your web client VM, and <code>api.example.com</code> should point to your API server VM.</p>
+
+<p>On DO, follow the <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean">How To Set Up a Host Name with DigitalOcean</a> tutorial to associate your domain name with your DigitalOcean droplets.</p>
+
+<p>On AWS, follow the instructions in the <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-ec2-instance.html">Routing Traffic to an Amazon EC2 Instance</a> tutorial.</p>
+
+<p>If you don't want to use your main domain name for the web client, you may instead use sub-domains for both droplets (e.g., <code>info344.example.com</code> and <code>info344api.example.com</code>).</p>
+
+<p class="alert"><strong>Note: It may take a few hours for the DNS changes to take effect</strong>. Once the <code>nslookup</code> or <code>host</code> commands on your development machine return the correct IP addresses for your domain, you can continue.</p>
+
+
+
+
+<h2>Get TLS Certificates and Keys From Let's Encrypt</h2>
+
+<p>Once the DNS is updated, you can use the <code>letsencrypt</code> utility on your servers to get free TLS certificates and keys. Follow the steps outlined in the <a href="https://info344-s17.github.io/tutorials/tls/#sec-runtheletsencryptutility">Run the Let's Encrypt Utility section of the tutorial</a>. Note that you will need to do this on <strong>both</strong> of your VMs. On your web client VM, get a cert for your primary domain name (<code>example.com</code>), but on your API server VM, get a cert for the <code>api.</code> subdomain of your primary domain (<code>api.example.com</code>).</p>
+
+<p class="alert">Note that Let's Encrypt certificates are valid for only 3 months at a time. After it expires, you'll need to renew it by stopping your Go server and re-running the letsencrypt utility. If you want a longer-lived cert, you need to purchase one from a certificate authority.</p>
+
+
+
+<h2>Dockerize Your API Server</h2>
+
+<p>Complete the <code>servers/gateway/Dockerfile</code> with the commands necessary to create a Docker container image for your API server. You will need the root CA certificates in order to request HTTPS URLs, so use <code>alpine</code> as the base image and use the <code>RUN</code> command to install the <code>ca-certificates</code> package in your new container image.</p>
+
+<p>You will have to rebuild your API Server Docker container many times throughout this course, so also create a <code>build.sh</code> bash script in your <code>servers/gateway/</code> directory that does the following:</p>
+
+<ul>
+	<li>Builds a Go executable for Linux</li>
+	<li>Builds the Docker container</li>
+	<li>Deletes the Go executable for Linux using <code>go clean</code>, so that it doesn't end up getting added to your repo</li>
+</ul>
+
+<p>Use your new build script to build a Docker container image for your API server.</p>
+
+<p>You can test your new Docker container image by running an instance locally on your dev machine, publishing port 443, and mounting a volume/setting environment variables that point to a self-signed certificate and key.</p>
+
+
+
+<h2>Deploy Your API Server</h2>
+
+<p>You will have to deploy your updated API server several times throughout this course, so create another bash script at <code>/servers/gateway/deploy.sh</code> that does the following:</p>
+
+<ul>
+	<li>Calls the build script you created in the previous step to rebuild the API server Linux executable and API docker container image</li>
+
+	<li>Pushes your API server Docker container image to Docker Hub</li>
+
+	<li>Executes the appropriate <code>docker rm -f</code>, <code>docker pull</code>, and <code>docker run</code> commands on your API server VM via <code>ssh</code> to stop the existing container instance, pull the updated container image from DockerHub, and re-run a newly-updated instance.</li>
+</ul>
+
+<p>When running an instance of your API server Docker container image, remember to do the following:</p>
+
+<ul>
+	<li>Mount the <code>/etc/letsencrypt</code> directory on the host as a volume in the container so that your Go server can read the TLS certificate and private key created by Let's Encrypt.</li>
+
+	<li>Set the TLSKEY and TLSCERT environment variables to point to your Let's Encrypt cert and key file path. Remember that Docker containers can't see environment variables declared in a host shell, so use the <code>-e</code> flag to <a href="https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e-env-env-file">set them when you run the container</a>.</li>
+
+	<li>Publish port 443 so that your server is accessible from the host</li>
+</ul>
+
+<p>Use your deploy script to deploy your API server docker container image to your API server VM. If all goes well, you should be able to request the following URL, replacing "your-domain.com" with your domain name:</p>
+
+<pre><code>https://api.your-domain.com/v1/summary?url=http://ogp.me</code></pre>
+
+<p>Also verify that your API server can fetch and summarize pages from HTTPS URLs:</p>
+
+<pre><code>https://api.your-domain.com/v1/summary?url=https://ischool.uw.edu</code></pre>
+
+<p>If you get errors while requesting summaries for <code>https://</code> URLs, but no errors when requesting summaries for HTTP URLs, that's likely because you forgot to install the <code>ca-certificates</code> package when building the Docker container image.</p>
+
+
+
+<h2>Dockerize Your Web Client</h2>
+
+<p>Change your web client JavaScript to use your newly deployed API server. For example, it should now make requests to <code>https://api.your-domain.com</code>, replacing "your-domain.com" with your domain name.</p>
+
+<p>We will use NGINX to serve your web client's static HTML, CSS, and JavaScript files. The default NGINX Docker container image only supports HTTP, but you should support HTTPS as well, and automatically redirect HTTP requests to HTTPS.</p>
+
+<p>Extract the <code>default.conf</code> file from the NGINX docker container and modify it to support HTTPS as described in the <a href="https://drstearns.github.io/tutorials/https/#secsupportinghttpsinnginx">Supporting HTTPS in NGINX section of the HTTPS tutorial</a>.</p>
+
+<p>Complete the <code>clients/summary/Dockerfile</code> with the commands necessary to build a Docker container image for your web client. Use <code>nginx</code> as the base image, but copy your modified <code>default.conf</code> file, as well as your static HTML, CSS, and JavaScript files into the container at the appropriate places. Refer to the <a href="https://drstearns.github.io/tutorials/docker/#secthedockerfile">Building Your Own Container Images section of the Docker tutorial</a> for details.</p>
+
+<p>Also write a bash script at <code>/clients/summary/build.sh</code> to build your web client Docker container image using your completed <code>Dockerfile</code>.</p>
+
+
+
+<h2>Deploy Your Web Client</h2>
+
+<p>Create a bash script in <code>clients/summary/deploy.sh</code> that does the following:</p>
+
+<ul>
+	<li>Calls the build script you created in the previous step to rebuild your web client docker container image</li>
+
+	<li>Pushes your web client Docker container to DockerHub</li>
+	
+	<li>Executes the appropriate <code>docker rm -f</code>, <code>docker pull</code>, and <code>docker run</code> commands on your web client VM via <code>ssh</code> to stop the existing container instance, pull the newly-updated container image from DockerHub, and re-run a newly-updated instance.</li>
+</ul>
+
+<p>When running your web client container instance, remember to do the following:</p>
+
+<ul>
+	<li>Mount the <code>/etc/letsencrypt</code> directory on the host as a volume in the container so that the NGINX server can read the TLS certificate and private key created by Let's Encrypt.</li>
+
+	<li>Publish ports 80 and 443.</li>
+</ul>
+
+<p>Use your new deploy script to deploy your web client container instance to your web client VM.</p>
+
+<p>If all goes well, you should be able to request the following URL and see your web client, replacing "your-domain.com" with your domain name:</p>
+
+<pre><code>https://your-domain.com</code></pre>
+
+<p>Use the returned web client page to request summaries for a few URLs to ensure that everything is working as expected.</p>
+
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<p>After you've verified that your deployed containers are working, commit all your changes to the <code>deploy</code> branch and push those to GitHub. Then create a GitHub pull request to merge all commits you've made to the <code>deploy</code> branch into the <code>master</code> branch. <strong>Include links to your deployed web client as well as your API server in the pull request description!</strong>. We need these links to verify that you deployed correctly. <strong>If you don't include them, you will receive a zero for functionality!</strong></p>
+
+<p>Finally, submit a link to your pull request via this assignment.</p>
+
+
+
+<h2>Opportunities for Extra-Credit</h2>
+
+<p>Looking for some more challenge? Try one or more of the following.</p>
+
+
+<h3>Create and Provision Your Infrastructure from Code (5 points max)</h3>
+
+<p>Manually creating VMs and provisioning them is slow, tedious, and error-prone. A better approach is to use an automated tool that can quickly create VMs and other cloud resources for you based on a simple declarative configuration file. This approach is known as "infrastructure as code" because you declare the infrastructure you want in a code file that is added to your repo, and the tool makes sure that everything you want gets created or modified as necessary.</p>
+
+<p>These tools are able to do this because AWS, DO, and all the other cloud infrastructure providers use the same web architecture we are using: their interactive web clients are decoupled from their API servers, and the former just calls the latter to do the real work. Those same API servers can also be called by these infrasturcture as code tools, and in fact, the API server doesn't really know nor care what kind of client is calling it.</p>
+
+<p>A popular infrastructure as code tool is <a href="https://www.terraform.io/">Terraform by HashiCorp</a>. Read these tutorials from their web site to learn what Terraform is and how it works:</p>
+
+<ul>
+	<li><a href="https://www.terraform.io/intro/index.html">What is Terraform?</a></li>
+	<li><a href="https://www.terraform.io/intro/getting-started/install.html">Getting Started with Terraform</a></li>
+</ul>
+
+<p>Once you understand how it works, create a new <code>infrastructure</code> directory within your repo, and in that new directory create Terraform configuration file(s) that accomplish the following:</p>
+
+<ul>
+	<li>Creates a VM for your API server and another VM for your web client</li>
+	<li>Adjusts your domain records so that <code>your-domain.com</code> points to the web client VM and <code>api.your-domain.com</code> points to your API server VM</li>
+	<li>Provisions the VMs by running letsencrypt to get the certs/keys, and installs Docker if necessary (AWS)</li>
+</ul>
+
+<p>If you do everything correctly, you can quickly create and provision your infrastructure from scratch as necessary.</p>
+
+
+

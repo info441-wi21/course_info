@@ -1,0 +1,155 @@
+<p>Most social media systems let users search for other users, and many will suggest possible matches as you type. For this assignment, you will add these features to your system. You will implement a <a href="https://drstearns.github.io/tutorials/trie/">trie data structure</a> to index all of your user profiles so that you can provide nearly-instant suggestions as the user types.</p>
+
+<p class="alert">Note: we are now halfway through this course, so the assignment descriptions will become progressively less directive and more like a functional spec you'd get as a professional developer. I will tell you what your system needs to do and give you a few tips, but you will decide how to organize your code and implement the features. My intent is to wean you off of the explicit directions you typically get as a student, and develop your ability to turn requirements into code, which is what you'll need to do as a professional developer. Read the tutorials and ask questions. We will help you as you need it.</p>
+
+<h2>Helpful Resources</h2>
+
+<p>The following resources will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/mutexes/">Supporting Concurrent Use with Go Mutexes</a></li>
+</ul>
+
+<h2>Checkout the Branch</h2>
+
+<p>Your challenges repo should already contain a <code>search</code> branch with the requisite starter files. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>auth</code> branch into the <code>search</code> branch:</p>
+
+<pre><code>git checkout search
+git merge auth</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>This branch contains two new files:</p>
+
+<ul>
+	<li><code>servers/gateway/indexes/trie.go</code>: where you will implement your trie data structure.</li>
+	<li><code>servers/gateway/indexes/trie_test.go</code>: where you will implement automated tests for your trie data structure.</li>
+</ul>
+
+<h2>Implement the Trie</h2>
+
+<p>Providing suggested matches as users type requires a very fast in-memory index. This is often implemented using a <a href="https://drstearns.github.io/tutorials/trie/">trie data structure</a>, as those enable very fast prefix searching.</p>
+
+<p>Implement a trie in your Go API server that meets these requirements:</p>
+
+<ul>
+	<li>It must store key/value pairs, where the key is a Unicode string and the value is an <code>int64</code> (data type for DBMS-assigned primary key values).</li>
+
+	<li>Since the keys will be personal names, and since this will be a worldwide system, you must support keys containing any valid Unicode characters (e.g., not just A&ndash;Z). Don't copy the naive trie implementation you find on the web that use a 26-element array in each node. That won't work for all Unicode characters.</li>
+	
+	<li>Multiple values may be stored for the same key, but they should remain a distinct set. That is, if the key/value is already in the trie, don't add the value again.</li>
+	
+	<li>It must have a method that returns the first <em>n</em> values that match a given prefix string, where <em>n</em> and the prefix string are parameters. Find the branch of the trie holding keys that start with the prefix string, and then do a recursive depth-first search to find the first <em>n</em> values in that branch. As you iterate over the child nodes, do so in alphabetical order according to the character's Unicode value.</li>
+
+	<li>It must have a method that removes a given key/value pair from the trie. If the final node for key is a leaf node, and if that node has no more values, trim that branch of the trie up to the first ancestor node that has a value.</li>
+
+	<li>Since this trie will be read and modified from multiple concurrent goroutines, you must protect the trie for concurrent use.</li>
+</ul>
+
+<p>As you build this, also implement <strong>automated tests</strong> to ensure that your trie is producing the correct results. Add keys with characters in the ASCII range as well as higher Unicode values. Test cases where the prefix should return multiple values, where it should return only one value, and where it should return no values. Ensure that your tests achieve 100% coverage.</p>
+
+
+
+<h2>Load Existing Users into Trie at Startup</h2>
+
+<p>When you server starts, you need to load all of your existing user accounts into the trie so that they are ready to be searched. Add a method to your user store implementation that iterates over all users in the database, adding each to the trie. For each user, add a new key/value pair for each of the following user fields, using that field as the key and the ID field as the value.</p>
+
+<ul>
+	<li>UserName</li>
+	<li>LastName</li>
+	<li>FirstName</li>
+</ul>
+
+<p>Convert the field value to lower-case before adding it as the key so that your searching will be case-insensitive.</p>
+
+<p>If the field value contains multiple words separated by spaces (e.g., "van der Meulen"), add each word to the trie as a separate key, all with the same ID value. That will enable clients to find "van der Meulen" when searching for "meulen".</p>
+
+
+
+
+<h2>Add New Users to Trie During Sign-Up</h2>
+
+<p>After you create a new user account in your <code>UsersHandler()</code>, add that user to the trie, indexing all of the same fields as listed above. That will make it possible for other users to find this new user.</p>
+
+
+
+
+<h2>Patch the Trie During Profile Update</h2>
+
+<p>Because our server allows users to change their first and last names, you also need to patch those key/value pairs after the user profile has been updated in the database. We only allow users to change their first and last names.</p>
+
+
+
+<h2>Implement the User Search API</h2>
+
+<p>Use the populated trie to implement this API:</p>
+
+<p><code>GET /v1/users?q=...prefix...</code></p>
+
+<p>This API may be called only by authenticated users. Unauthenticated users should receive a response with a status code of <code>http.StatusUnauthorized</code> (401).</p>
+
+<p>The <code>q</code> query string parameter is required. If it's empty, respond with an <code>http.StatusBadRequest</code> error status code.</p>
+
+<p>Find the first 20 UserIDs who's keys start with the prefix supplied in the <code>q</code> query string parameter. Fetch the user profiles with those IDs from your user store, <strong>ordered by UserName ascending</strong>. Respond to the client with those user profiles, encoded as a JSON array of objects.</p>
+
+
+
+
+<h2>Add User Search to your Web Client</h2>
+
+<p>Add some UI to your web client that allows authenticated users to search for other users. As the user types, make an AJAX request to the search API you just implemented, passing the current input value as the <code>q</code> query string parameter. Display the results on the screen and update those with each AJAX response. Show at least the <code>userName</code>, <code>firstName</code>, <code>lastName</code>, and <code>photoURL</code> properties. Show the <code>photoURL</code> as an avatar image, not as text. Note that Gravatar supports adding a <code>s</code> query string parameter to that URL to <a href="https://en.gravatar.com/site/implement/images/">specify the desired image size in pixels</a> (since the images are always square, the value should be just a single number).</p>
+
+
+
+
+
+<h2>Rebuild Docker Container Images and Redeploy</h2>
+
+<p>Since you've modified your API server and web client, rebuild your Docker container images, and re-deploy them to your droplets on DigitalOcean.</p>
+
+
+<p>Ensure that your deployed web client and server are working as expected.</p>
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<ul>
+	<li>Run <code>go test ./...</code> from the <code>servers/gateway</code> directory to ensure that all of your automated tests are still passing.</li>
+
+	<li>Commit all of your changes to the <code>search</code> branch.</li>
+
+	<li>Push the <code>search</code> branch to GitHub and create a pull request to merge all commits you've made to the <code>search</code> branch into the <code>master</code> branch.</li>
+
+	<li>Submit a link to that pull request, and <strong>include a link to your deployed API gateway server in submission comments.</strong></li>
+</ul>
+
+
+
+
+<h2>Opportunities for Extra Credit</h2>
+
+<p>Want some more challenge? Try one or more of these optional extra-credit requirements.</p>
+
+<h3>Highlight Matched Prefixes in Search Results (1 point max)</h3>
+
+<p>When you display the results of a user search in your web client, highlight the parts of the user profile that matched the search prefix. For example, if you search for "zuck" and got "Mark Zuckerberg" then highlight the "Zuck" part of the last name in some way (bold, different color, different background color, etc.).</p>
+
+
+
+<h3>Multi-Token Search (2 points max)</h3>
+
+<p>An <code>@</code> mention within a message is typically restricted to just one prefix token (e.g., "@zuck"), but a user search page might allow searching with multiple prefix tokens (e.g., "m zuck" to find "Mark Zuckerberg"). Implement support for multi-token searching in your User Search API: if the value of the <code>q</code> query string parameter contains multiple tokens separated by spaces, treat them as separate search prefixes, and respond with users who match all prefixes.</p>
+
+<p>If you did the highlighting feature above, make sure you highlight each of the search prefixes in the results.</p>
+
+
+<h3>Implement a Hybrid Trie (10 points max)</h3>
+
+<p>A simple trie consumes a lot of memory if the keys are long and divergent. You can save quite a lot of memory by implementing a hybrid trie instead. A hybrid trie uses two kinds of nodes: one that stores a map of runes to child nodes (exactly like the simple trie); and one that stores a list of key/value pairs. This latter node type is used for leaf nodes until the number of key/value pairs exceeds a particular threshold (e.g., 50). Once the threshold is exceeded, the list node converts itself into a map node with new list nodes as children, one for each distinct first letter in the existing keys.</p>
+
+<p>The theory is that scanning a list of 50 items is nearly as fast as following several node branches, so the speed remains similar while the amount of memory consumed reduces significantly.</p>
+
+
+

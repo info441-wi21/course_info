@@ -1,0 +1,240 @@
+<p>The system you have built so far is the foundation for any API server with authenticated user accounts. We could now just add more code to the API server to implement the rest of our system, but if we turn that API server into a microservices gateway instead, we could add any functionality we want over time via microservices. These microservices are very simple and focused HTTP servers that can be written in any language. The gateway takes care of all the common things like HTTPS-termination, CORS, authentication, and logging, while each microservice adds one small set of features to the overall system.</p>
+
+<p>Over the next two assignments, you will turn your API server into an API gateway and build one microservice that adds real-time multi-channel messaging functionality, kind of like a simple version of Slack. In this assignment you'll turn your Go API server into a microservices gateway and implement the core functionality of the microservice. You'll also refactor that page summary API you built in the first challenge into another microservice. In the next assignment you'll add real-time notifications via a message queue and WebSockets.</p>
+
+<p>Since microservices are separate processes that communicate through standard network protocols, you can write them in whatever language is best suited for the given task. To illustrate this, you'll implement the messaging microservice in a different language of your choosing: JavaScript (using Node.js); Java (using the Undertow framework); or Python (using the Flask framework).</p>
+
+<h2>Helpful Resources</h2>
+
+<p>The following resources will help you complete this challenge:</p>
+
+<ul>
+	<li><a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX series on Microservices</a></li>
+	<li><a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a></li>
+	<li><a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL driver</a></li>
+	<li><a href="http://undertow.io/undertow-docs/undertow-docs-1.4.0/index.html">Java Undertow documentation</a></li>
+	<li><a href="http://www.oracle.com/technetwork/java/overview-141217.html">JDBC Overview</a></li>
+	<li><a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">Python Flask Mega-Tutorial</a></li>
+</ul>
+
+<h2>Checkout the Branch</h2>
+
+<p>Your challenges repo should already contain a <code>microservices</code> branch with the requisite starter files. To start this challenge, checkout that branch and merge all of your changes you committed to the <code>search</code> branch into the <code>microservices</code> branch:</p>
+
+<pre><code>git checkout microservices
+git merge search</code></pre>
+
+<p>After running those commands ensure that all the code you wrote for the last challenge is still in the relevant files.</p>
+
+<p>This branch should have two new directories:</p>
+
+<ul>
+	<li><code>servers/messaging/</code>: where you will build your messaging microservice.</li>
+	<li><code>servers/summary/</code>: where you refactor your existing summary API into a new microservice.</li>
+</ul>
+
+
+
+<h2>Refactor the Page Summary API into a Microservice</h2>
+
+<p>Remember that page summary API you implemented during the first challenge? It doesn't really belong in the gateway itself, and that's a perfect example of a focused microservice.</p> 
+
+<p>Refactor just the <code>/v1/summary</code> API into a new Go microservice in the <code>servers/summary/</code> directory. Since all requests to this microservice will go through the gateway, this server only needs to support HTTP requests and doesn't need to worry about CORS headers or authentication.</p>
+
+<p>Note that this is essentially what you wrote for the first assignment, minus the CORS header (which will now be added by the gateway). Remember that this code is on a separate git branch, so it's easy to recover.</p>
+
+
+
+
+
+<h2>Build the Messaging Microservice</h2>
+
+<p>In the <code>/servers/messaging</code> directory, create a microservice that implements the following models and APIs. You may implement this using whatever language and framework you'd like, but we can help you if you choose JavaScript/Node.js, Java/Undertow, or Python/Flask.</p>
+
+<p>You may use whatever persistent DBMS you want: it can be the same one you're using for the user profiles, or something different (e.g., MongoDB). Use environment variables to get the DBMS's network address.</p>
+
+<p>Since your API gateway will handle authentication, you don't have to worry about it here. The current user will be encoded as a JSON object in the <code>X-User</code> header. If that header is not in the request, assume that the user is unauthenticated and respond accordingly.</p>
+
+<p>And since this server will be called only from your gateway inside a Docker private network, you only need to support HTTP connections, not HTTPS. Read your port number from an environment variable so that you can use a high-numbered port during development, but the standard port 80 when running in a Docker container for production.</p>
+
+
+<h3>Models</h3>
+
+<p>There are only two models in this service: channel and message. Their properties in the request and response JSON must be as follows:</p>
+
+<ul>
+	<li><code>channel</code>
+		<ul>
+			<li><code>id</code>: unique ID that identifies this channel</li>
+			<li><code>name</code>: unique channel name</li>
+			<li><code>description</code>: a short description of the channel</li>
+			<li><code>private</code>: a boolean that indicates if this channel is private (true) or public (false or omitted)</li>
+			<li><code>members</code>: if the channel is private, an array containing the profiles of all channel members</li>
+			<li><code>createdAt</code>: date/time the channel was created</li>
+			<li><code>creator</code>: copy of the entire profile of the user who created this channel</li>
+			<li><code>editedAt</code>: date/time the channel's properties were last edited (may be omitted until channel is edited)</li>
+		</ul>
+	</li>
+	<li><code>message</code>
+		<ul>
+			<li><code>id</code>: unique ID that identifies this message</li>
+			<li><code>channelID</code>: ID of channel to which this message belongs</li>
+			<li><code>body</code>: the message text</li>
+			<li><code>createdAt</code>: date/time the message was created</li>
+			<li><code>creator</code>: copy of the entire profile of the user who created this message</li>
+			<li><code>editedAt</code>: date/time the message body was last edited</li>
+		</ul>
+	</li>
+</ul>
+
+<p>This describes what these objects need to be in JSON, but how you store them in the database is up to you. If you use a relational database, you would likely store only the user ID for the channel and message cretator, and do a join when selecting to get the full user profile for the creator.</p>
+
+
+<h3>General Channel</h3>
+
+<p>When your database container starts, it should ensure that there is at least one channel in the database named <code>"general"</code>. This will give GUI clients a well-known place to start after the user signs-up/in. Your microservice will ensure that this channel can never be deleted.</p>
+
+
+
+<h3>APIs</h3>
+
+<p>All of the following APIs require the user to be authenticated. If the user is not authenticated (i.e., no <code>X-User</code> header in the request), respond immediately with the status code 401 (Unauthorized).</p>
+
+<ul>
+	<li><code>/v1/channels</code>: refers to all channels
+		<ul>
+			<li><code>GET</code>: Respond with the list of all channels (just the channel models, not the messages in those channels) that the current user is allowed to see, encoded as a JSON array. Include a Content-Type header set to <code>application/json</code> so that your client knows what sort of data is in the response body.</li>
+			
+			<li><code>POST</code>: Create a new channel using the channel model JSON in the request body. The <code>name</code> property is required, but <code>description</code> is optional. Respond with a 201 status code, a Content-Type set to <code>application/json</code>, and a copy of the new channel model (including its new ID) encoded as a JSON object.</li>
+		</ul>
+	</li>
+	
+	<li><code>/v1/channels/{channelID}</code>: refers to a specific channel identified by <code>{channelID}</code>
+		<ul>
+			<li><code>GET</code>: If this is a private channel and the current user is not a member, respond with a 403 (Forbidden) status code. Otherwise, respond with the most recent 100 messages posted to the specified channel, encoded as a JSON array of message model objects. Include a Content-Type header set to <code>application/json</code> so that your client knows what sort of data is in the response body.</li>
+			
+			<li><code>POST</code>: If this is a private channel and the current user is not a member, respond with a 403 (Forbidden) status code. Otherwise, create a new message in this channel using the JSON in the request body. The only message property you should read from the request is <code>body</code>. Set the others based on context. Respond with a 201 status code, a Content-Type set to <code>application/json</code>, and a copy of the new message model (including its new ID) encoded as a JSON object.</li>
+			
+			<li><code>PATCH</code>: If the current user isn't the creator of this channel, respond with the status code 403 (Forbidden). Otherwise, update only the <code>name</code> and/or <code>description</code> using the JSON in the request body and respond with a copy of the newly-updated channel, encoded as a JSON object. Include a Content-Type header set to <code>application/json</code> so that your client knows what sort of data is in the response body.</li>
+			
+			<li><code>DELETE</code>: If the current user isn't the creator of this channel, respond with the status code 403 (Forbidden). Otherwise, delete the channel and all messages related to it. Respond with a plain text message indicating that the delete was successful.</li>
+		</ul>
+	</li>
+
+	<li><code>/v1/channels/{channelID}/members</code>: refers to the members of a private channel identified by <code>{channelID}</code>
+		<ul>
+			<li><code>POST</code>: If the current user isn't the creator of this channel, respond with the status code 403 (Forbidden). Otherwise, add the user supplied in the request body as a member of this channel, and respond with a 201 status code and a simple plain text message indicating that the user was added as a member. Only the <code>id</code> property of the user is required, but the client may post the entire user profile.</li>
+
+			<li><code>DELETE</code>: If the current user isn't the creator of this channel, respond with the status code 403 (Forbidden). Otherwise, remove the user supplied in the request body from the list of channel members, and respond with a 200 status code and a simple plain text message indicating that the user was removed from the list of members. Only the <code>id</code> property of the user is required, but the client may post the entire user profile.</li>
+		</ul>
+
+	</li>
+	
+	<li><code>/v1/messages/{messageID}</code>: refers to a specific message identified by <code>{messageID}</code>
+		<ul>
+			<li><code>PATCH</code>: If the current user isn't the creator of this message, respond with the status code 403 (Forbidden). Otherwise, update the message <code>body</code> property using the JSON in the request body, and respond with a copy of the newly-updated message, encoded as a JSON object. Include a Content-Type header set to <code>application/json</code> so that your client knows what sort of data is in the response body.</li>
+			
+			<li><code>DELETE</code>: If the current user isn't the creator of this message, respond with the status code 403 (Forbidden). Otherwise, delete the message and respond with a the plain text message indicating that the delete was successful.</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+<h2>Turn Your API Server into a Gateway Server</h2>
+
+<p>In your <code>main()</code> function read two new environment variables:</p>
+
+<ul>
+	<li><code>MESSAGESADDR</code>: may contain a comma-delimited list of network addresses where your messaging microservice instances are listening.</li>
+
+	<li><code>SUMMARYADDR</code>: may contain a comma-delimited list of network addresses where your page summary microservice instances are listening.</li>
+</ul>
+
+<p>Use these addresses to create <a href="https://golang.org/pkg/net/http/httputil/">reverse proxies</a> for your microservices. If the environment variables contain multiple addresses, use a round-robin approach for selecting which address to use for a given request.</p>
+
+<p>Before forwarding the request to your microservice instances, if there is a currently-authenticated user, add a new header to the request named <code>X-User</code>, and set its value to the currently authenticated user, encoded as a JSON object. That way your microservices will know who the currently authenticated user is. <strong>If there is no currently-authenticated user, remember to remove any <code>X-User</code> header that might be in the request you received from the client!</strong> Otherwise a nefarious client could spoof an authenticated user!</p>
+
+
+
+
+
+<h2>Dockerize your Microservices</h2>
+
+<p>Create a new Docker container image for your messages microservice and one for your Go page summary microservice. Push them to Docker Hub and deploy them to your API server VM. Run at least one instance of each within your Docker private network on that VM. <strong>DO NOT</strong> publish any ports when starting these microservices so that they are callable only from your API gateway, and not directly from the Internet.</p>
+
+
+
+<h2>Rebuild Docker Container Image and Redeploy</h2>
+
+<p>Rebuild your API gateway container image, and re-deploy to your API server VM. When you run it, set those new environment variables via the <code>-e</code> flag to be the container names of your microservice instances. Remember that the Docker container name becomes the host name for the container within a Docker private network, so the address for each service will be the same as the Docker container name.</p>
+
+<p>Test your deployed API gateway server via Postman or curl to make sure the APIs listed above function as expected. The gateway should  forward those API requests to your microservice instances, and pipe the responses back to the client. We will test your deployed system by making calls to these new microservice APIs.</p>
+
+<p>You will build the web client features for channels and messages during the next assignment.</p>
+
+
+
+<h2>Create a Pull Request, and Submit</h2>
+
+<ul>
+	<li>Run <code>go test ./...</code> from the <code>servers/gateway</code> directory to ensure that all of your automated tests are still passing.</li>
+
+	<li>Commit all of your changes to the <code>microservices</code> branch.</li>
+
+	<li>Push the <code>microservices</code> branch to GitHub and create a pull request to merge all commits you've made to the <code>microservices</code> branch into the <code>master</code> branch.</li>
+
+	<li>Submit a link to that pull request, and <strong>include a link to your deployed API gateway server in the submission comments</strong>.</li>
+</ul>
+
+
+
+
+<h2>Opportunities for Extra Credit</h2>
+
+<p>Want some more challenge? Try one or more of these optional extra-credit requirements.</p>
+
+
+<h3>Add Page Summaries for Links in Message Bodies (5 points max)</h3>
+
+<p>Many social media sites include page summary previews for any links you embed in message bodies. Since you have a page summary microservice, use it from your messages microservice to get page summaries for any URLs embedded in a new message's <code>body</code> property. Save the summaries with the message in the database, and include the summaries with the message during GET requests under a <code>summaries</code> property.</p>
+
+
+<h3>Add Message List Paging (2 points max)</h3>
+
+<p>Your <code>GET /v1/channels/{channelID}</code> API currently returns only the most recent messages with no way to get older messages. Add support for a <code>before</code> query string parameter that accepts a message ID. If provided, return the most recent 100 messages in the specified channel with message IDs less than the message ID in that query string parameter.</p>
+
+<p>This will allow a client to seamlessly request the previous page of results when the user scrolls back to the earliest message in the current page of results.</p>
+
+
+
+
+
+<h3>Dynamic Service Discovery (10 points max)</h3>
+
+<p>The core requirements ask you to hard-code the network addresses where your microservice instances are listening into environment variables the gateway reads at startup. This is an easy way to get started, but it doesn't make it easy to dynamically add new instances of an existing microservice, or entirely new microservices. Ideally, we want our gateway to dynamically discover microservices as they spin-up, without requiring any code changes or cycling of the gateway server process. Individual microservices should be able to discover the network addresses of other microservices they depend upon as well.</p>
+
+<p>One way to do this is to use the <a href="https://redis.io/topics/pubsub">publish/subscribe (pub/sub)</a> feature of redis. Redis allows clients to publish messages to a redis channel name, and other clients can subscribe to that same redis channel to receive those messages. The publishers don't need to know or care who is subscribing, and the subscribers don't have to know anything about who is publishing.</p>
+
+<p>When your microservices start-up, publish a JSON-encoded object with the following properties to a well-known redis channel name. Then re-publish that same information every 10 seconds, like a heartbeat:</p>
+
+<ul>
+	<li><code>name</code>: a unique name for the service (e.g., "messages" or "summary")</li>
+	<li><code>pathPattern</code>: a <a href="http://www.regular-expressions.info/">regular expression</a> that matches resource paths the service can handle</li>
+	<li><code>address</code>: network address of this service instance</li>
+</ul>
+
+<p>By re-publishing this every 10 seconds, you make it possible not only to start the services in any order, but also for the gateway (or other services) to discover if your service terminates.</p>
+
+<p>In your gateway, start a goroutine that subscribes to the same well-known redis channel name, and reads new messages in an infinite loop. Whenever you receive a message, unmarshal it and use that to maintain a list of services and their instances. If you receive a message with a service name or address you haven't seen before, add it to the list. If you have seen it before, update a <code>lastHeartbeat</code> time field so you know the last time you received a heartbeat for that service instance.</p>
+
+<p>Also start another goroutine that periodically looks for service instances for which you haven't received a heartbeat in a while, and remove those instances from your list. For example, if the services are supposed to send a heartbeat ever 10 seconds, remove ones that haven't sent a heartbeat for 20 seconds or more.</p>
+
+<p>Finally, instead of using hard-coded reverse proxies that get network addresses from environment variables, create a new middleware handler that checks the requested resource path against the <code>pathPattern</code> properties of your services. If you find a match, use a reverse proxy to forward the request to one of the instances of that service. If you have multiple instances, use some sort of load-balancing approach (round-robin, random, etc.).</p>
+
+<p>If you get this to work, you can spin-up new service instances whenever you need to, and the gateway will automatically add them into the system. When you don't need the instance anymore, you can terminate it and the gateway will automatically remove it after a short period of time.</p>
+
+<p>Note that this is a simple approach to service discovery and health monitoring that allows you to understand how the more complex systems work. For a real production system, consider using the much more powerful (but also more complex) tool <a href="https://www.consul.io/">Consul</a>.</p>
+
+

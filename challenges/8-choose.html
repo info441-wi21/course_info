@@ -1,0 +1,55 @@
+<p>Your messaging system is now functional, but still quite simple compared to something like Slack. In this final assignment, you will add a feature or two of your own choosing. Select <strong>two features from the Smaller Features list, or one from the Bigger Features list</strong> and implement them. If you want to do a feature that's not listed here, that's very welcome, but talk with your TA to determine if it qualifies as smaller or bigger. If you want to do more than just two smaller or one bigger, feel free to do so and we will award you extra-credit!</p>
+
+<h2>Create a Branch</h2>
+
+<p>Create a new branch off of <code>notify</code> named <code>adventure</code>, and make all commits you do for this assignment on that branch.</p>
+
+<pre><code>git checkout notify
+git checkout -b adventure</code></pre>
+
+
+<h2>Smaller Features</h2>
+
+<ul>
+	<li><strong>Emoji Reactions:</strong> Allow users to react to a message using an emoji. Note that emoji are just <a href="https://unicode.org/emoji/charts/full-emoji-list.html">Unicode code points or code point sequences in a particular range</a>. Your API should accept those code points and store them in the database as a reaction from the current user to the particular message. A sensible resource path would be <code>/v1/messages/{messageID}/reactions</code> and the method would be <code>POST</code>. If the user has already reacted with that emoji to that message, just ignore the request and respond with 200 instead of 201. Store these reactions in the database, associated with the message, and include these reactions (including the UserName of the user who reacted) when returning messages from a channel.</li>
+
+	<li><strong>Star Messages:</strong> Allow users to "star" particular messages, view all messages they have starred, and unstar a previously-starred message. This is essentially a manually-selected list of messages the user wants to have easy access to. Since this is user-specific, a sensible resource path would be <code>/v1/users/me/starred/messages</code>. Use <code>POST</code> to star a message, <code>GET</code> to view all starred messages. Use <code>DELETE /v1/users/me/starred/messages/{message-id}</code> to unstar a particular message.</li>
+
+	<li><strong>Message Read State:</strong> Track in the database whether a given user has read a given message. When returning messages from a given messaging channel, include a <code>unread</code> property on any message the current user hasn't read. Omit that property entirely on messages that have been read by the current user to reduce the size of the data. Once the user has read the message, your client should make a <code>PATCH</code> request to the message's resource path to set <code>unread</code> to false.</li>
+
+	<li><strong>Reminders:</strong> Allow users to be reminded about a message at a particular time. At that time, a background process/goroutine in your system should send a reminder message down any WebSocket connection belonging to that user.</li>
+
+	<li><strong>Threaded Replies:</strong> Allow users to reply to a message. Note that a reply is essentially a new message with an extra property for the parent message ID. When returning messages from a channel, include only the top-level messages (those with no parent message ID), and for each, include just the number of replies to that message. Add another API to fetch the replies for a given message (e.g., <code>/v1/messages/{messageID}/replies</code>).</li>
+
+	<li><strong>Password Strength:</strong> Weak passwords make it easier for attackers compromise accounts. Detect weak passwords during sign-up and reject them. Use a library such as <a href="https://github.com/dropbox/zxcvbn">Dropbox's zxcvbn package</a> to estimate the strength of the password, and reject it if it's below a given threshold.</li>
+
+	<li><strong>RSS:</strong> Add APIs that return <a href="https://en.wikipedia.org/wiki/RSS">RSS feeds</a> for your various messaging channels (e.g., <code>/v1/channels/{channelID}/rss</code>. Use an RSS reader like <a href="https://feedly.com/i/welcome">Feedly</a> to verify that your RSS feeds are working correctly.</li>
+
+	<li><strong>Cache Frequently-Accessed User Profiles:</strong> Although your trie index provides very fast prefix searching, the values stored in the trie are just user IDs: you still have to fetch the full user profiles from the DBMS. To make that faster, you can cache the most-recently fetched user profiles in memory in your gateway server. If all of the profiles you need are already in your cache, you don't even need to query the DBMS. Implement a cache that sits between your handlers and your <code>users.Store</code> implementation that holds on to the most recent <em>N</em> user profiles fetched from the store. If a user profile is already in the cache, use the cached version instead of fetching it from the DBMS. Also make sure you remove user profiles from the cache when they are updated via the API&mdash;otherwise your cache will return stale and incorrect data.</li>
+
+
+</ul>
+
+
+<h2>Bigger Features</h2>
+
+<ul>
+	<li><strong>Post Media Files as Messages:</strong> Allow users to post a media file, like an image or a video, as a new message. Use the <code>Content-Type</code> request header to determine if the posted content is JSON (normal text-based message) or <code>multipart/form-data</code>, which indicates a file upload. Media files should be saved to the file system of the container running your messaging service. When you save the message to the database, save a URL in the body column that when requested will return the uploaded media file. You might also add a column to track the media file's content type, so that your client will know how to render it (&lt;img&gt;, &lt;video&gt;, or &lt;audio&gt; element).</li>
+
+	<li><strong>Chat Bot:</strong> Create a bot user that can answer a small range of questions. You can train your own NLP model, or use the NLP service <a href="https://wit.ai/">wit.ai</a>. Users must be able to post a question to the bot in some way, and the bot should make another post with the answer. You can use a private channel for this, or just <code>@mybot</code> mentions in a post to a public channel. What sort of questions your bot supports is up to you, but keep it clean!</li>
+
+	<li><strong>Authenticate with GitHub and Google:</strong> Allow users to sign-in with GitHub or Google instead of a local email address and password. Read the <a href="https://aaronparecki.com/oauth-2-simplified/">OAuth 2 Simplified</a> tutorial to understand the protocol, and then use the <a href="https://github.com/golang/oauth2">golang/oauth2</a> package to implement APIs for OAuth with GitHub and Google.</li>
+
+	<li><strong>Two-Factor Authentication:</strong> If you didn't do the two-factor authentication extra-credit option during the <a href="4116007">Authenticating Users challenge</a>, you can add that feature now now. See the extra-credit options in that assignment for details.</li>
+
+	<li><strong>Spam Filter:</strong> Train your own machine learning model to detect and flag possible spam messages, or use an existing spam detection service. Each time a new message is posted, write an spam detection job to a message queue. Write another microservice that monitors that message queue, runs the message body through the machine learning model, and updates a <code>spam</code> property on the message with the probability returned from your model. Include this new property when returning messages to clients so that they can flag these messages as potential spam (or segment them off to a different part of the UI). Also provide an API that clients can use to indicate whether it was really spam or not, and feed that back into your model to improve it.</li>
+
+	<li><strong>Seamlessly Scale with a Kubernetes Cluster:</strong> Large-scale sites typically use a container orchestration service like <a href="https://kubernetes.io/">Kubernetes</a> to manage scalable and highly-available clusters. Use Kubernetes to create clusters for your microservices and gateway. <strong>Note: if you do this one, talk with Ethan so that he can not only help you, but also verify that you got it working.</strong></li>
+
+</ul>
+
+<h2>Deploy and Submit</h2>
+
+<p>Deploy your new features to your production VMs.</p>
+
+<p>To submit, create a PR to merge the <code>adventure</code> branch back into <code>master</code>, and submit a link to the PR. Please also <strong>list which features you did in your pull request comment, and how you implemented them in your code</strong> so that we know what to look for.</p>
