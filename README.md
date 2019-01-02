@@ -6,10 +6,11 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 ## Team
 
-Instructor: Nigini Oliveira
-TA's: Anirudh Kumar Subramanyam and Bao Dinh
+Instructor: [Nigini Oliveira](http://nigini.me)
 
-(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this offer!)
+TA's: Anirudh Kumar Subramanyam & Bao Dinh
+
+(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this course!)
 
 ## Communication
 
@@ -17,7 +18,81 @@ All communication should happen through Announcements and Discussions on [Canvas
 
 ## Schedule
 
-*Will be here soon!*
+Below each day are a set of required sources that I want you to read/watch **before coming to class**. These will orient and prepare you for our in-class coding exercises. If you don't do these, you'll get lost rather quickly.
+
+| Date   | Material |
+| :----: | -------- |
+| 1/8 | Welcome to the Server-Side |
+| |<a href="https://drstearns.github.io/tutorials/http/">The HyperText Transfer Protocol</a>|
+| |<a href="https://drstearns.github.io/tutorials/env/">Environment Variables</a>|
+| |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
+| |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
+| |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
+| LAB  | How to 411? |
+| 1/10 | Go Web Services |
+| |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
+| |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
+| |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
+| 1/15 | Docker |
+| |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
+| |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
+| |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
+| LAB | Docker Practice |
+| 1/17 | Deploying & Encrypting |
+| |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
+| |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
+| |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
+| 1/22 | Automated Tests |
+| |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
+| |<a href="https://blog.golang.org/cover">The Cover Story</a>|
+| LAB | Automated Testing Practice |
+| 1/24 | Tracking Sessions |
+| |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
+| |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
+| |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
+| 1/29 | Persisting Data |
+| |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
+| |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
+| |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
+| LAB | Docker and RDBMSs |
+| 1/31 | REST APIs |
+| |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
+| 2/5 | Middleware |
+| |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
+| LAB | Middleware Practice |
+| 2/7 | Trie Indexes |
+| |<a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a>|				
+| |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
+| 2/12 | Microservices |
+| |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
+| |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
+| |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
+| |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
+| LAB | Service Discovery |
+| 2/14 | Node.js Microservices |
+| |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
+| |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
+| |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
+| 2/19 | Java Microservices |
+| | <a href="http://undertow.io/undertow-docs/undertow-docs-1.4.0/index.html">Undertow documentation</a>|
+| LAB | Java Microservices |
+| 2/21 | Python Microservices |
+| |<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega-Tuorial Chapters 1 (Hello World), 4 (Databases), and 7 (Error Handling)</a>|
+| 2/26 | Message Queues |
+| |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
+| |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
+| LAB | Homework Time |
+| 2/28 | Web Sockets |
+| |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
+| |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
+| 3/5 | Concurrent Programming with Channels |
+| |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
+| |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
+| |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
+| LAB | Homework Time |
+| 3/7 | Benchmarking and Security |
+| 3/12 | Buffer |
+| 3/14 | Buffer |
 
 ## Course Rules
 
