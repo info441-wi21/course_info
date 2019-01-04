@@ -118,4 +118,4 @@ If we determine that you plagiarized code, you will get an automatic zero on the
 
 ### Calculation of Final Grades
 
-Canvas tracks grades on a percentage scale, but the UW requires us to convert those to a 4.0 scale when reporting grades at the end of the course. I will use [this standard conversion chart](https://faculty.washington.edu/dlsinfo/grading/grade-conversion-chart.pdf) to convert your percentage grade to the 4.0 scale. Fractional percentages will be rounded using normal numeric rounding rules before conversion.
+Canvas tracks grades on a percentage scale, but the UW requires us to convert those to a 4.0 scale when reporting grades at the end of the course. We will use [iSchool's standard grading scheme](https://canvas.uw.edu/courses/721562/pages/ischool-standard-grading-scheme) to convert your percentage grade to the 4.0 scale. Fractional percentages will be rounded using normal numeric rounding rules before conversion.
