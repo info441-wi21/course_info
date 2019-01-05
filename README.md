@@ -12,13 +12,24 @@ TA's: Anirudh Kumar Subramanyam & Bao Dinh
 
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this course!)
 
+### Office Ours
+
+To Do!!!:
+Anirudth will be available ?? and ?? from X to Y at room W.
+
+To Do!!!:
+Bao will be available Mondays and Wednesdays from X to Y at room W.
+
+Nigini will be available under request. (Please send a message with at least a day in advance via Canvas with a topic you need to discuss and a couple of times you can meet.)
+
 ## Communication
 
 All communication should happen through Announcements and Discussions on [Canvas](https://canvas.uw.edu/courses/1256544 "Canvas page for the UW iSchool Winter 2019 Server-side development course").
 
 ## Schedule
 
-Below each day are a set of required sources that I want you to read/watch **before coming to class**. These will orient and prepare you for our in-class coding exercises. If you don't do these, you'll get lost rather quickly.
+Below, each day have a set of required sources that we want you to read/watch **before coming to class**. These will orient and prepare you for our in-class coding exercises. 
+If you don't do this, you'll get lost rather quickly.
 
 | Date   | Material |
 | :----: | -------- |
@@ -94,17 +105,33 @@ Below each day are a set of required sources that I want you to read/watch **bef
 | 3/12 | Buffer |
 | 3/14 | Buffer |
 
-## Course Rules
+## Grading
 
-In addition to the standard [iSchool and UW academic policies](https://depts.washington.edu/infodocs/academic_policies/) that apply to all of our courses, the following rules also apply to this course.
+This course will be evaluated based on weekly assignments (10) and class+lab exercises (~18).
+
+Assignments worth 90% of the grade and will be released every Tuesday morning. The submission deadline will be every Monday night (so you will have a week to work on each of those). 
+Exercises compose the other 10% of the final grade and will be only doable by students present to classes. Because of that, you can miss up to 3 of those and still get full points.
+
+In total, each week you will have an assignment that worths 100 points and two exercises worthing ten.
+
+### Calculation of Final Grades
+
+Canvas tracks grades on a percentage scale. To convert those to a 4.0 scale we will use [the standard iSchool conversion chart](https://faculty.washington.edu/dlsinfo/grading/grade-conversion-chart.pdf). 
+
+BTW: Canvas is already configured to calculate your final grade considering the previously described 90/10 grading weights and this conversion scale.
 
 ### Late Work
 
-Turning things in late disrupts everyone's lives, including your own, so the challenges are due when they are marked as due. Since each challenge builds upon your solution for the previous one, it's imperative that you keep up. To encourage you to keep on schedule, we will deduct 10% of the possible points per 24-hour period that your submission is late, with a one hour initial grace period. For example, if the assignment is worth 100 points and your submission is between 1 and 24 hours late, the maximum you can receive on the assignment is 90 points. If your submission is between 24 and 48 hours late, the maximum you can receive is 80 points.
+Since each assignment builds upon your solution for the previous one, it's imperative that you keep up. To encourage you to keep on schedule, we will deduct 10% of the possible points per 24-hour period that your submission is late, with a one hour initial grace period. For example, if the assignment is worth 100 points and your submission is between 1 and 24 hours late, the maximum you can receive on the assignment is 90 points. If your submission is between 24 and 48 hours late, the maximum you can receive is 80 points.
 
-That said, we realize that sometimes life gets complicated and you might need a little extra time to finish a particular challenge. To give you a little flexibility you have 4 free late days that you can spend throughout the quarter. Each late day gives you a free 24-hour extension on the challenge. Unless you specify otherwise, we will use your late days for any work you submit late. After you exhaust all your late days, the normal late penalties will start to accrue.
+That said, we realize that sometimes life gets complicated and you might need a little extra time to finish a particular challenge. To give you a little flexibility you have 5 free late days that you can spend throughout the quarter. Each late day gives you a free 24-hour extension on the challenge. Unless you specify otherwise, we will use your late days for any work you submit late. After you exhaust all your late days, the normal late penalties will start to accrue.
 
 If something tragic occurs during the quarter, please let us know and we can work out something.
+
+
+## Course Rules
+
+In addition to the standard [iSchool and UW academic policies](https://depts.washington.edu/infodocs/academic_policies/) that apply to all of our courses, the following rules also apply to this course.
 
 ### Plagiarism
 
@@ -115,7 +142,3 @@ Although professional web developers often reuse code they find on the web, they
 If we receive multiple solutions with nearly identical code, we will notice. Remember that git records a log of every commit, so we can see exactly what you committed and when. If we see you commit code that is virtually identical to code a fellow student committed earlier, it's not too difficult to figure out who is copying from whom.
 
 If we determine that you plagiarized code, you will get an automatic zero on the assignment, and we will file an academic misconduct report with the Associate Dean of Academics. We will also have a very unpleasant conversation about your future in the Information School, so just don't do it. If you've simply run out of time, use your late days.
-
-### Calculation of Final Grades
-
-Canvas tracks grades on a percentage scale, but the UW requires us to convert those to a 4.0 scale when reporting grades at the end of the course. I will use [this standard conversion chart](https://faculty.washington.edu/dlsinfo/grading/grade-conversion-chart.pdf) to convert your percentage grade to the 4.0 scale. Fractional percentages will be rounded using normal numeric rounding rules before conversion.
