@@ -8,7 +8,7 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 Instructor: [Nigini Oliveira](http://nigini.me)
 
-TA's: Anirudh Kumar Subramanyam & Bao Dinh
+TA's: Anirudh Kumar Subramanyam & [Bao Dinh](https://www.linkedin.com/in/baohdinh/)
 
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this course!)
 
@@ -17,10 +17,9 @@ TA's: Anirudh Kumar Subramanyam & Bao Dinh
 To Do!!!:
 Anirudth will be available ?? and ?? from X to Y at room W.
 
-To Do!!!:
-Bao will be available Mondays and Wednesdays from X to Y at room W.
+Bao will be available Mondays and Wednesdays from 1:30 to 3:30 at MGH440.
 
-Nigini will be available under request. (Please send a message with at least a day in advance via Canvas with a topic you need to discuss and a couple of times you can meet.)
+Nigini will be available under request. (Please send a message with at least a day in advance via Canvas with a topic you need to discuss and a couple of time slots you can meet.)
 
 ## Communication
 
