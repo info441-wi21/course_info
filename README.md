@@ -44,6 +44,7 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
+| |[!! Exercise](https://github.com/info441/exercises/tree/master/zip)
 | 1/15 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
