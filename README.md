@@ -12,7 +12,7 @@ TA's: [Anirudh Kumar Subramanyam](https://www.linkedin.com/in/anirudh-subramanya
 
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this course!)
 
-### Office Ours
+### Office Hours
 
 Anirudh will be available Mondays from 12:30 to 2:30 and Fridays from 11:30 to 1:30 at MGH440.
 
