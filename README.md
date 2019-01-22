@@ -59,6 +59,7 @@ If you don't do this, you'll get lost rather quickly.
 | 1/22 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/testing)|
 | LAB | Automated Testing Practice |
 | 1/24 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
