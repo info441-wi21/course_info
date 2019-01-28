@@ -70,11 +70,11 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
-| LAB | Docker and RDBMSs |
-| 1/31 | REST APIs |
-| |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
-| 2/5 | Middleware |
+| LAB | Postman Testing |
+| 1/31 | Catch-Up + Project Bootstrap |
+| 2/5 | REST APIs + Middleware |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
+| |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
 | LAB | Middleware Practice |
 | 2/7 | Trie Indexes |
 | |<a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a>|				
