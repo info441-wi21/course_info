@@ -65,16 +65,18 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/hmac)
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/hmac)|
 | 1/29 | Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/postman)|
 | LAB | Postman Testing |
 | 1/31 | Catch-Up + Project Bootstrap |
 | 2/5 | REST APIs + Middleware |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/middleware)|
 | LAB | Middleware Practice |
 | 2/7 | Trie Indexes |
 | |<a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a>|				
