@@ -81,6 +81,7 @@ If you don't do this, you'll get lost rather quickly.
 | 2/7 | Trie Indexes |
 | |<a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a>|				
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/trie)|
 | 2/12 | Microservices |
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
