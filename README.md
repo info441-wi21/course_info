@@ -87,6 +87,7 @@ If you don't do this, you'll get lost rather quickly.
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
+| |[!!Exercise](https://github.com/info441/exercises/tree/master/microservices)|
 | LAB | Service Discovery |
 | 2/14 | Node.js Microservices |
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
