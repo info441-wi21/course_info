@@ -93,9 +93,8 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
 | |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
-| 2/19 | Java Microservices |
-| | <a href="http://undertow.io/undertow-docs/undertow-docs-1.4.0/index.html">Undertow documentation</a>|
-| LAB | Java Microservices |
+| 2/19 | Microservices catchup + Project Ideas checkup |
+| LAB | Microservices |
 | 2/21 | Python Microservices |
 | |<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega-Tuorial Chapters 1 (Hello World), 4 (Databases), and 7 (Error Handling)</a>|
 | 2/26 | Message Queues |
