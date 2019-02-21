@@ -95,23 +95,22 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
 | 2/19 | Microservices catchup + Project Ideas checkup |
 | LAB | Microservices |
-| 2/21 | Python Microservices |
-| |<a href="https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world">The Flask Mega-Tuorial Chapters 1 (Hello World), 4 (Databases), and 7 (Error Handling)</a>|
-| 2/26 | Message Queues |
+| 2/21 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
-| LAB | Homework Time |
-| 2/28 | Web Sockets |
+| 2/26 | Web Sockets |
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
 | |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
-| 3/5 | Concurrent Programming with Channels |
+| LAB | Homework Time |
+| 2/28 | Concurrent Programming with Channels |
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
+| 3/5 | Benchmarking |
 | LAB | Homework Time |
-| 3/7 | Benchmarking and Security |
-| 3/12 | Buffer |
-| 3/14 | Buffer |
+| 3/7 | Scalability |
+| 3/12 | Project Presentations |
+| 3/14 | Project Presentations |
 
 ## Grading
 
