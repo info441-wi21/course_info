@@ -108,11 +108,12 @@ If you don't do this, you'll get lost rather quickly.
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
-| 3/5 | Benchmarking |
+| 3/5 | Homework Time |
 | LAB | Homework Time |
-| 3/7 | Scalability |
-| 3/12 | Project Presentations |
-| 3/14 | Project Presentations |
+| 3/7 | Homework Time |
+| 3/12 | Homework Time |
+| 3/14 | Project Presentations??? |
+| 3/19 | Project Presentations!!! |
 
 ## Grading
 
