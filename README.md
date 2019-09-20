@@ -18,7 +18,7 @@ TBD
 
 ## Communication
 
-All communication should happen through [Canvas](https://canvas.uw.edu/courses/1321414 "Canvas page for the UW iSchool Autumn 2019 Server-side development course" and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3aa670d1b210a14d4e8cc8beeafc70246a%40thread.skype/conversations?groupId=8f272ac9-f36a-4680-a82b-08b4c82b5e0e&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)).
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1321414 "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3aa670d1b210a14d4e8cc8beeafc70246a%40thread.skype/conversations?groupId=8f272ac9-f36a-4680-a82b-08b4c82b5e0e&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)).
 
 ## Schedule
 
