@@ -22,8 +22,7 @@ All communication should happen through [Canvas](https://canvas.uw.edu/courses/1
 
 ## Schedule
 
-Below, each day have a set of required sources that we want you to read/watch **before coming to class**. These will orient and prepare you for our in-class coding exercises. 
-If you don't do this, you'll get lost rather quickly.
+Below, are the contents we are covering for each day (future days content might change)
 
 | Date   | Material |
 | :----: | -------- |
@@ -35,7 +34,7 @@ If you don't do this, you'll get lost rather quickly.
 | |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
 | |[!! Exercise](https://classroom.github.com/a/ZnYsYjMQ)|
 | |[!! Week Assignment](https://classroom.github.com/a/ZMocr6oA)|
-| LAB  | How to 411? |
+<!---| LAB  | How to 411? |
 | 1/10 | Go Web Services |
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
@@ -109,7 +108,7 @@ If you don't do this, you'll get lost rather quickly.
 | 3/7 | Homework Time |
 | 3/12 | Homework Time |
 | 3/14 | Project Presentations??? |
-| 3/19 | Project Presentations!!! |
+| 3/19 | Project Presentations!!! |-->
 
 ## Grading
 
