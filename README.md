@@ -6,23 +6,19 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 ## Team
 
-Instructor: [Nigini Oliveira](http://nigini.me)
+Instructor: [Kyle Thayer](http://kylethayer.com)
 
-TA's: [Anirudh Kumar Subramanyam](https://www.linkedin.com/in/anirudh-subramanyam/) & [Bao Dinh](https://www.linkedin.com/in/baohdinh/)
+TA's: William Kwok & Rico Wang
 
-(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making his material available as a base for this course!)
+(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo. 
 
 ### Office Hours
 
-Anirudh will be available Mondays from 12:30 to 2:30 and Fridays from 11:30 to 1:30 at MGH440.
-
-Bao will be available Mondays and Wednesdays from 1:30 to 3:30 at MGH440.
-
-Nigini will be available under request. (Please send a message with at least a day in advance via Canvas with a topic you need to discuss and a couple of time slots you can meet.)
+TBD
 
 ## Communication
 
-All communication should happen through Announcements and Discussions on [Canvas](https://canvas.uw.edu/courses/1256544 "Canvas page for the UW iSchool Winter 2019 Server-side development course").
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1321414 "Canvas page for the UW iSchool Autumn 2019 Server-side development course" and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3aa670d1b210a14d4e8cc8beeafc70246a%40thread.skype/conversations?groupId=8f272ac9-f36a-4680-a82b-08b4c82b5e0e&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)).
 
 ## Schedule
 
