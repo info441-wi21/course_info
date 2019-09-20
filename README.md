@@ -22,7 +22,7 @@ All communication should happen through [Canvas](https://canvas.uw.edu/courses/1
 
 ## Schedule
 
-Below, are the contents we are covering for each day (future days content might change)
+Below, are the contents for each class day.
 
 | Date   | Material |
 | :----: | -------- |
