@@ -110,6 +110,8 @@ Below, are the contents for each class day.
 | 3/14 | Project Presentations??? |
 | 3/19 | Project Presentations!!! |-->
 
+##
+
 ## Grading
 
 This course will be evaluated based on weekly assignments (10) and class+lab exercises (~18).
