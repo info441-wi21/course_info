@@ -32,8 +32,7 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
 | |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
-| |[!! Exercise](https://classroom.github.com/a/ZnYsYjMQ)|
-| |[!! Week Assignment](https://classroom.github.com/a/ZMocr6oA)|
+| |[!! Exercise](https://classroom.github.com/a/xmK63R0n)|
 <!---| LAB  | How to 411? |
 | 1/10 | Go Web Services |
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
