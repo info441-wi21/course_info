@@ -109,16 +109,14 @@ Below, are the contents for each class day.
 | 3/14 | Project Presentations??? |
 | 3/19 | Project Presentations!!! |-->
 
-##
 
-## Grading
+## Course Work
 
-This course will be evaluated based on weekly assignments (10) and class+lab exercises (~18).
+This course will be evaluated based on 6 assignments (70% of grade),  in class+lab exercises (10% of grade), and a final project (20% of grade).
 
-Assignments worth 90% of the grade and will be released every Tuesday morning. The submission deadline will be every Monday night (so you will have a week to work on each of those). 
-Exercises compose the other 10% of the final grade and will be only doable by students present to classes. Because of that, you can miss up to 3 of those and still get full points.
+All assignments will be done in teams of 2-4 people. You will turn in your own copy of the code with your own additional comments to show your understanding of the code. You will be graded on the code, your personal comments on the code, and on your role as a team member. We will evaluate your role as a team member based on the team's feedback and on our own observations. (If you are having any difficulty with your team, let us know early).
 
-In total, each week you will have an assignment that worths 100 points and two exercises worthing ten.
+
 
 ### Calculation of Final Grades
 
@@ -126,11 +124,13 @@ Canvas tracks grades on a percentage scale. To convert those to a 4.0 scale we w
 
 BTW: Canvas is already configured to calculate your final grade considering the previously described 90/10 grading weights and this conversion scale.
 
-### Late Work
+### Late Work / missing labs
 
-Since each assignment builds upon your solution for the previous one, it's imperative that you keep up. To encourage you to keep on schedule, we will deduct 10% of the possible points per 24-hour period that your submission is late, with a one hour initial grace period. For example, if the assignment is worth 100 points and your submission is between 1 and 24 hours late, the maximum you can receive on the assignment is 90 points. If your submission is between 24 and 48 hours late, the maximum you can receive is 80 points.
+To encourage you to keep on schedule with projects, we will deduct 10% of the possible points per 24-hour period that your submission is late, with a one hour initial grace period. For example, if the assignment is worth 100 points and your submission is between 1 and 24 hours late, the maximum you can receive on the assignment is 90 points. If your submission is between 24 and 48 hours late, the maximum you can receive is 80 points.
 
 That said, we realize that sometimes life gets complicated and you might need a little extra time to finish a particular challenge. To give you a little flexibility you have 5 free late days that you can spend throughout the quarter. Each late day gives you a free 24-hour extension on the challenge. Unless you specify otherwise, we will use your late days for any work you submit late. After you exhaust all your late days, the normal late penalties will start to accrue.
+
+Additionally we allow you to miss 2 of the lab excersizes and still get full points on that portion of the grade.
 
 If something tragic occurs during the quarter, please let us know and we can work out something.
 
@@ -138,13 +138,3 @@ If something tragic occurs during the quarter, please let us know and we can wor
 ## Course Rules
 
 In addition to the standard [iSchool and UW academic policies](https://depts.washington.edu/infodocs/academic_policies/) that apply to all of our courses, the following rules also apply to this course.
-
-### Plagiarism
-
-We encourage collaboration, but "collaboration" doesn't mean copying other people's code and trying to pass it off as your own. Collaboration means talking through your approach to a problem, or showing someone how you make something work. You can borrow approaches or techniques, but I want you to write your own implementation.
-
-Although professional web developers often reuse code they find on the web, they also take the time to understand what that code is doing, customize it to their specific context, and cite the source so that they can find it again later. If you want to use code you find on the web, please include the source URL in a comment above the code, and take the time to understand why it works. Otherwise you won't learn anything.
-
-If we receive multiple solutions with nearly identical code, we will notice. Remember that git records a log of every commit, so we can see exactly what you committed and when. If we see you commit code that is virtually identical to code a fellow student committed earlier, it's not too difficult to figure out who is copying from whom.
-
-If we determine that you plagiarized code, you will get an automatic zero on the assignment, and we will file an academic misconduct report with the Associate Dean of Academics. We will also have a very unpleasant conversation about your future in the Information School, so just don't do it. If you've simply run out of time, use your late days.
