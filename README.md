@@ -13,8 +13,10 @@ TA's: William Kwok & Rico Wang
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo. 
 
 ### Office Hours
+Office: MGH 330D
+Office Hours: Tues. 9-11am, Thur. 2:30 - 3:30pm
 
-TBD
+Or email or message me to schedule separately
 
 ## Communication
 
