@@ -39,6 +39,7 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
+| |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
 | |[!! Exercise](https://github.com/info441/exercises/tree/master/zip)|
 <!---| LAB  | How to 411? | --->
 <!---
