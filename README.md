@@ -28,19 +28,20 @@ Below, are the contents for each class day.
 
 | Date   | Material |
 | :----: | -------- |
-| 1/8 | Welcome to the Server-Side |
+| 9/25 | Welcome to the Server-Side |
 | |<a href="https://drstearns.github.io/tutorials/http/">The HyperText Transfer Protocol</a>|
 | |<a href="https://drstearns.github.io/tutorials/env/">Environment Variables</a>|
 | |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
 | |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
 | |[!! Exercise](https://classroom.github.com/a/xmK63R0n)|
-<!---| LAB  | How to 411? |
-| 1/10 | Go Web Services |
+<!---| LAB  | How to 411? | --->
+| 9/30 | Go Web Services |
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
 | |[!! Exercise](https://github.com/info441/exercises/tree/master/zip)|
+<!---
 | 1/15 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
