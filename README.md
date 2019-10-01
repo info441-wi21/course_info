@@ -118,7 +118,7 @@ Below, are the contents for each class day.
 
 ## Course Work
 
-This course will be evaluated based on 6 assignments (70% of grade),  in class+lab exercises (10% of grade), and a final project (20% of grade).
+This course will be evaluated based on 6 assignments (75% of grade), and a final project (25% of grade).
 
 All assignments will be done in teams of 2-4 people. You will turn in your own copy of the code with your own additional comments to show your understanding of the code. You will be graded on the code, your personal comments on the code, and on your role as a team member. We will evaluate your role as a team member based on the team's feedback and on our own observations. (If you are having any difficulty with your team, let us know early).
 
