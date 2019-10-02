@@ -1,6 +1,6 @@
 # INFO-441 Server-Side Development
 
-This is the homepage for the [UW iSchool](https://ischool.uw.edu/) Winter 2019 Server-side development course.
+This is the homepage for the [UW iSchool](https://ischool.uw.edu/) Autumn 2019 Server-side development course.
 
 Dive deeply into the world of server-side development. Build your own web application. Deploy it to the cloud. Authenticate users. Authorize and validate persistent data. Build retrieval indexes for fast searching. Notify clients of changes in real-time. Extend your system with a microservice architecture. Put it all together in a sophisticated web applications.
 
