@@ -47,13 +47,12 @@ Below, are the contents for each class day.
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
 | |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
 | |[!! Exercise (docker)](https://classroom.github.com/a/xmK63R0n)|
-<!---
-| LAB | Docker Practice |
-| 1/17 | Deploying & Encrypting |
+| 10/7 | Deploying & Encrypting |
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |[!! Exercise](https://github.com/info441/exercises/tree/master/deploy)
+<!---
 | 1/22 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
