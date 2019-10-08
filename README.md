@@ -51,13 +51,12 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
-| |[!! Exercise](https://github.com/info441/exercises/tree/master/deploy)
-<!---
+| |[!! Exercise (deploy)](https://github.com/info441/exercises/tree/master/deploy)
 | 1/22 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/testing)|
-| LAB | Automated Testing Practice |
+| |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
+<!---
 | 1/24 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
