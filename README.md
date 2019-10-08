@@ -52,16 +52,16 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |[!! Exercise (deploy)](https://github.com/info441/exercises/tree/master/deploy)
-| 1/22 | Automated Tests |
+| 10/08 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
-<!---
 | 1/24 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/hmac)|
+| |[!!Exercise (hmac)](https://github.com/info441/exercises/tree/master/hmac)|
+<!---
 | 1/29 | Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
