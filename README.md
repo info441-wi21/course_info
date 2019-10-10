@@ -55,6 +55,7 @@ Below, are the contents for each class day.
 | 10/08 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
+| |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
 | |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
 | 1/24 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
