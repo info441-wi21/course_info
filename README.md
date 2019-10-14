@@ -57,34 +57,30 @@ Below, are the contents for each class day.
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
 | |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
-| 1/24 | Tracking Sessions |
+| 10/14 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
 | |[!!Exercise (hmac)](https://github.com/info441/exercises/tree/master/hmac)|
-<!---
-| 1/29 | Persisting Data |
+| 10/16 | Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/postman)|
-| LAB | Postman Testing |
-| 1/31 | Catch-Up + Project Bootstrap |
-| 2/5 | REST APIs + Middleware |
+| |[!!Exercise (postman)](https://github.com/info441/exercises/tree/master/postman)|
+| 10/21 | REST APIs + Middleware |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/middleware)|
-| LAB | Middleware Practice |
-| 2/7 | Trie Indexes |
-| |<a href="https://drstearns.github.io/tutorials/trie/">The Trie Data Structure</a>|				
+| |[!!Exercise (middleware)](https://github.com/info441/exercises/tree/master/middleware)|
+| 10/23 | Catch-Up + Project Bootstrap |
+| 10/28 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/trie)|
-| 2/12 | Microservices |
+| 10/30 | Microservices |
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
-| |[!!Exercise](https://github.com/info441/exercises/tree/master/microservices)|
+| |[!!Exercise (microservices)](https://github.com/info441/exercises/tree/master/microservices)|
+<!---
 | LAB | Service Discovery |
 | 2/14 | Node.js Microservices |
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
