@@ -75,39 +75,33 @@ Below, are the contents for each class day.
 | 10/23 | Catch-Up + Project Bootstrap |
 | 10/28 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
-| 10/30 | Microservices |
+| 10/30 | Node.js Microservices|
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
-| |[!!Exercise (microservices)](https://github.com/info441/exercises/tree/master/microservices)|
-<!---
-| LAB | Service Discovery |
-| 2/14 | Node.js Microservices |
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
 | |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
-| 2/19 | Microservices catchup + Project Ideas checkup |
-| LAB | Microservices |
-| 2/21 | Message Queues |
+| |[!!Exercise (microservices)](https://github.com/info441/exercises/tree/master/microservices)|
+| 11/4 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
 | |[Use case: Asynchronous Tasks in Python with Celery and RabbitMQ](https://www.youtube.com/watch?v=fg-JfZBetpM)|
-| 2/26 | Web Sockets |
+| 11/6 | Present / Review Proposals |
+| 11/13/26 | Web Sockets |
 | |[TALK: Real-life WebSocket Use Cases and Experiences](https://youtu.be/khULSvz_hdE)|
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
 | |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
-| LAB | Homework Time |
-| 2/28 | Concurrent Programming with Channels |
+| 11/18 | Concurrent Programming with Channels |
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
-| 3/5 | Homework Time |
-| LAB | Homework Time |
-| 3/7 | Homework Time |
-| 3/12 | Homework Time |
-| 3/14 | Project Presentations??? |
-| 3/19 | Project Presentations!!! |-->
+| 11/20 | Homework Time ??? |
+| 11/25 | Homework Time ??? |
+| 11/27 | NO CLASS (day before Thanksgiving) |
+| 12/2 | Homework Time ??? |
+| 12/4 | Project Presentations!!! |-->
 
 
 ## Course Work
