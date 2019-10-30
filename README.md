@@ -83,7 +83,7 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
 | |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
-| |[!!Exercise (microservices)](https://github.com/info441/exercises/tree/master/microservices)|
+| |[!!Exercise (microservices)](https://github.com/INFO441-19au-org/exercises-kylethayer/tree/master/microservices)|
 | 11/4 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
