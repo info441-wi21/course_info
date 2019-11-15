@@ -114,7 +114,7 @@ All assignments will be done in teams of 2-4 people. You will turn in your own c
 
 ### Calculation of Final Grades
 
-Canvas tracks grades on a percentage scale. To convert those to a 4.0 scale we will use [the standard iSchool conversion chart](https://faculty.washington.edu/dlsinfo/grading/grade-conversion-chart.pdf). 
+Canvas tracks grades on a percentage scale. To convert those to a 4.0 scale we will use [the standard iSchool conversion chart](https://faculty.washington.edu/dlsinfo/grading/grade-conversion-chart.pdf) (though we may curve up if grades in the course are too low). 
 
 BTW: Canvas is already configured to calculate your final grade considering the previously described 90/10 grading weights and this conversion scale.
 
