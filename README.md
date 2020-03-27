@@ -1,6 +1,6 @@
 # INFO-441 Server-Side Development
 
-This is the homepage for the [UW iSchool](https://ischool.uw.edu/) Autumn 2019 Server-side development course.
+This is the homepage for the [UW iSchool](https://ischool.uw.edu/) Spring 2020 Server-side development course.
 
 Dive deeply into the world of server-side development. Build your own web application. Deploy it to the cloud. Authenticate users. Authorize and validate persistent data. Build retrieval indexes for fast searching. Notify clients of changes in real-time. Extend your system with a microservice architecture. Put it all together in a sophisticated web applications.
 
@@ -8,19 +8,19 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 Instructor: [Kyle Thayer](http://kylethayer.com)
 
-TA's: William Kwok & Rico Wang
+TA's: William Kwok
 
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo. 
 
 ### Office Hours
-Office: MGH 330D
-Office Hours: Tues. 9-11am, Thur. 2:30 - 3:30pm
+Office: Online!
+Office Hours: TBD
 
 Or email or message me to schedule separately
 
 ## Communication
 
-All communication should happen through [Canvas](https://canvas.uw.edu/courses/1321414 "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3aa670d1b210a14d4e8cc8beeafc70246a%40thread.skype/conversations?groupId=8f272ac9-f36a-4680-a82b-08b4c82b5e0e&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)).
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1373080 "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3a364e3e9961e3474b8d9a8f4877762e95%40thread.tacv2/conversations?groupId=8b1d0972-e0c2-45a1-88be-9aa0761aa34a&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)) (code 41h0qjp).
 
 ## Schedule
 
@@ -108,8 +108,11 @@ Below, are the contents for each class day.
 
 This course will be evaluated based on 6 assignments (75% of grade), and a final project (25% of grade).
 
-All assignments will be done in teams of 2-4 people. You will turn in your own copy of the code with your own additional comments to show your understanding of the code. You will be graded on the code, your personal comments on the code, and on your role as a team member. We will evaluate your role as a team member based on the team's feedback and on our own observations. (If you are having any difficulty with your team, let us know early).
+All assignments will be done individually or with one other person. You will turn in your own copy of the code.
 
+The final project will be done in groups of 2-4 people. You will be graded on the code and on your role as a team member. We will evaluate your role as a team member based on the team's feedback and on our own observations. (If you are having any difficulty with your team, let us know early).
+
+There is no final exam.
 
 
 ### Calculation of Final Grades
