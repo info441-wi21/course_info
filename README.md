@@ -30,54 +30,54 @@ Below, are the contents for each class day.
 
 | Date   | Material |
 | :----: | -------- |
-| 9/25 | Welcome to the Server-Side |
+| 3/31 | Welcome to the Server-Side |
 | |<a href="https://drstearns.github.io/tutorials/http/">The HyperText Transfer Protocol</a>|
 | |<a href="https://drstearns.github.io/tutorials/env/">Environment Variables</a>|
 | |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
 | |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
 | |[!! Exercise](https://classroom.github.com/a/xmK63R0n)|
-| 9/30 | Go Web Services |
+| 4/2 | Go Web Services |
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
 | |[!! Assignment (summary branch)](https://classroom.github.com/a/W3AI9d2L))|
 | |[!! Exercise](https://classroom.github.com/a/xmK63R0n)|
-| 10/2 | Docker |
+| 4/7 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
 | |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
 | |[!! Exercise (docker)](https://classroom.github.com/a/xmK63R0n)|
-| 10/7 | Deploying & Encrypting |
+| 4/9 | Deploying & Encrypting |
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |[!! Exercise (deploy)](https://github.com/info441/exercises/tree/master/deploy)
-| 10/08 | Automated Tests |
+| 4/14 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
 | |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
-| 10/14 | Tracking Sessions |
+| 4/16 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
 | |Docker Network slides: <a href="slides/lecture%20-%20Docker%20Networks.pptx">pptx</a>, <a href="slides/lecture%20-%20Docker%20Networks.pdf">pdf</a>|
 | |[!!Exercise (hmac)](https://github.com/info441/exercises/tree/master/hmac)|
-| 10/16 | Persisting Data |
+| 4/21 | Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
 | |[!!Exercise (postman)](https://github.com/info441/exercises/tree/master/postman)|
-| 10/21 | REST APIs + Middleware |
+| 4/23 | REST APIs + Middleware |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
 | |[!!Exercise (middleware)](https://github.com/info441/exercises/tree/master/middleware)|
-| 10/23 | Catch-Up + Project Bootstrap |
-| 10/28 | Protecting Data Structures |			
+| 4/28 | Catch-Up + Project Bootstrap |
+| 4/30 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
-| 10/30 | Node.js Microservices|
+| 5/5 | Node.js Microservices|
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
@@ -86,24 +86,24 @@ Below, are the contents for each class day.
 | |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
 | |[!!Exercise (microservices)](https://github.com/INFO441-19au-org/exercises-kylethayer/tree/master/microservices)|
-| 11/4 | Message Queues |
+| 5/7 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
 | |[Use case: Asynchronous Tasks in Python with Celery and RabbitMQ](https://www.youtube.com/watch?v=fg-JfZBetpM)|
-| 11/6 | Present / Review Proposals |
-| 11/13/26 | Web Sockets |
+| 5/12 | Present / Review Proposals |
+| 5/14 | Web Sockets |
 | |[TALK: Real-life WebSocket Use Cases and Experiences](https://youtu.be/khULSvz_hdE)|
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
 | |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
-| 11/18 | Concurrent Programming with Channels |
+| 5/19 | Concurrent Programming with Channels |
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
-| 11/20 | Homework Time ??? |
-| 11/25 | Homework Time ??? |
-| 11/27 | NO CLASS (day before Thanksgiving) |
-| 12/2 | Homework Time ??? |
-| 12/4 | Project Presentations!!! |-->
+| 5/21 | Homework Time ??? |
+| 5/26 | Homework Time ??? |
+| 5/29 | NO CLASS (day before Thanksgiving) |
+| 6/2 | Homework Time ??? |
+| 6/4 | Project Presentations!!! |-->
 
 
 ## Course Work
