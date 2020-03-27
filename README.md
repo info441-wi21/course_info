@@ -14,6 +14,8 @@ TA's: William Kwok
 
 ### Office Hours
 Office: Online!
+
+
 Office Hours: TBD
 
 Or email or message me to schedule separately
@@ -106,7 +108,7 @@ Below, are the contents for each class day.
 
 ## Course Work
 
-This course will be evaluated based on 6 assignments (75% of grade), and a final project (25% of grade).
+This course will be evaluated based on lecture exercises (10% of grade), 6 assignments (70% of grade), and a final project (20% of grade).
 
 All assignments will be done individually or with one other person. You will turn in your own copy of the code.
 
@@ -125,11 +127,11 @@ BTW: Canvas is already configured to calculate your final grade considering the 
 
 To encourage you to keep on schedule with projects, we will deduct 10% of the possible points per 24-hour period that your submission is late, with a one hour initial grace period. For example, if the assignment is worth 100 points and your submission is between 1 and 24 hours late, the maximum you can receive on the assignment is 90 points. If your submission is between 24 and 48 hours late, the maximum you can receive is 80 points.
 
-That said, we realize that sometimes life gets complicated and you might need a little extra time to finish a particular challenge. To give you a little flexibility you have 5 free late days that you can spend throughout the quarter. Each late day gives you a free 24-hour extension on the challenge. Unless you specify otherwise, we will use your late days for any work you submit late. After you exhaust all your late days, the normal late penalties will start to accrue.
+That said, we realize that sometimes life gets complicated and you might need a little extra time to finish a particular challenge. To give you a little flexibility you have 8 free late days that you can spend throughout the quarter. Each late day gives you a free 24-hour extension on the challenge. Unless you specify otherwise, we will use your late days for any work you submit late. After you exhaust all your late days, the normal late penalties will start to accrue.
 
-Additionally we allow you to miss 2 of the lab excersizes and still get full points on that portion of the grade.
+Additionally we allow you to miss 2 of the lecture excersizes and still get full points on that portion of the grade.
 
-If something tragic occurs during the quarter, please let us know and we can work out something.
+If some additional difficulty occurs, please let us know and we can work out something.
 
 
 ## Course Rules
