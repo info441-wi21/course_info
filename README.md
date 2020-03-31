@@ -17,9 +17,12 @@ Office: Online!
 
 
 Office Hours: 
-Kyle: TBD Or email or message me to schedule separately
-Will: TBD
-Chris: Monday 2pm-4pm, Wednesday 2pm-4pm
+
+&nbsp;&nbsp;&nbsp;&nbsp;Kyle: TBD Or email or message me to schedule separately
+
+&nbsp;&nbsp;&nbsp;&nbsp;Will: TBD
+
+&nbsp;&nbsp;&nbsp;&nbsp;Chris: Monday 2pm-4pm, Wednesday 2pm-4pm
 
 ## Communication
 
