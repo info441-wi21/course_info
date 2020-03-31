@@ -22,7 +22,7 @@ Office Hours:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Will: TBD
 
-&nbsp;&nbsp;&nbsp;&nbsp;Chris: Monday 2pm-4pm, Wednesday 2pm-4pm
+&nbsp;&nbsp;&nbsp;&nbsp;Chris: TBD
 
 ## Communication
 
