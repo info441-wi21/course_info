@@ -8,17 +8,18 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 Instructor: [Kyle Thayer](http://kylethayer.com)
 
-TA's: William Kwok
+TA's: William Kwok, Chris Forbes
 
-(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo. 
+(The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo.) 
 
 ### Office Hours
 Office: Online!
 
 
-Office Hours: TBD
-
-Or email or message me to schedule separately
+Office Hours: 
+  Kyle: TBD Or email or message me to schedule separately
+  Will: TBD
+  Chris: Monday 2pm-4pm, Wednesday 2pm-4pm
 
 ## Communication
 
