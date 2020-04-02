@@ -18,7 +18,7 @@ Office: Online!
 
 Office Hours: 
 
-&nbsp;&nbsp;&nbsp;&nbsp;Kyle: TBD Or email or message me to schedule separately
+&nbsp;&nbsp;&nbsp;&nbsp;Kyle: Wed. 12-1pm Or email or message me to schedule separately
 
 &nbsp;&nbsp;&nbsp;&nbsp;Will: TBD
 
