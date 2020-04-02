@@ -40,15 +40,15 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
 | |<a href="https://canvas.uw.edu/courses/1373080/assignments/5385825">Lecture Exercises</a>|
-| 4/2 | Go Web Services 
-| |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
+| 4/2 | Go Web Services
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
-| |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
+| |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
+| |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
-| |[!! Assignment (summary branch)](https://classroom.github.com/a/W3AI9d2L))|
+| |[!! Assignment (summary branch)](https://classroom.github.com/a/Fvn8eZcd))|
 | |[!! Exercise](https://classroom.github.com/a/uvgSMH_5)|
-| |[!! Exercise](https://classroom.github.com/a/uvgSMH_5)|
+| |<a href="https://canvas.uw.edu/courses/1373080/assignments/5399553">Lecture Exercises</a>)|
 | 4/7 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
