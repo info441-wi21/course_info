@@ -20,9 +20,9 @@ Office Hours:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Kyle: Wed. 12-1pm Or email or message me to schedule separately
 
-&nbsp;&nbsp;&nbsp;&nbsp;Will: TBD
+&nbsp;&nbsp;&nbsp;&nbsp;William: TBD
 
-&nbsp;&nbsp;&nbsp;&nbsp;Chris: TBD
+&nbsp;&nbsp;&nbsp;&nbsp;Chris: Tuesday class time and Monday 2-4pm
 
 ## Communication
 
