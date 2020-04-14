@@ -58,10 +58,10 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
+| |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |[!! Exercise (deploy)](https://github.com/info441/exercises/tree/master/deploy)
 | 4/14 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
-| |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
 | |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
 | 4/16 | Tracking Sessions |
