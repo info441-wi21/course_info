@@ -106,7 +106,7 @@ Below, are the contents for each class day.
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
 | 5/21 | Homework Time ??? |
 | 5/26 | Homework Time ??? |
-| 5/29 | NO CLASS (day before Thanksgiving) |
+| 5/28 | Homework Time ??? |
 | 6/2 | Homework Time ??? |
 | 6/4 | Project Presentations!!! |-->
 
