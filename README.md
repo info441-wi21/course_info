@@ -75,39 +75,39 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
 | |[!!Exercise (postman)](https://github.com/info441/exercises/tree/master/postman)|
-| 4/23 | REST APIs + Middleware |
+| 4/23 | Catch-Up |
+| 4/28 | REST APIs + Middleware + announce project |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
 | |[!!Exercise (middleware)](https://github.com/info441/exercises/tree/master/middleware)|
-| 4/28 | Catch-Up + Project Bootstrap |
 | 4/30 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
-| 5/5 | Node.js Microservices|
+| 5/5 | Node.js|
+| |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
+| |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
+| |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
+| 5/7 | Microservices|
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
-| |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
-| |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
-| |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
 | |[!!Exercise (microservices)](https://github.com/INFO441-19au-org/exercises-kylethayer/tree/master/microservices)|
-| 5/7 | Message Queues |
+| 5/12 | Present / Review Proposals |
+| 5/14 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
 | |[Use case: Asynchronous Tasks in Python with Celery and RabbitMQ](https://www.youtube.com/watch?v=fg-JfZBetpM)|
-| 5/12 | Present / Review Proposals |
-| 5/14 | Web Sockets |
+| 5/19 | Web Sockets |
 | |[TALK: Real-life WebSocket Use Cases and Experiences](https://youtu.be/khULSvz_hdE)|
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
 | |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
-| 5/19 | Concurrent Programming with Channels |
+| 5/21 | Concurrent Programming with Channels |
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
-| 5/21 | Homework Time ??? |
-| 5/26 | Homework Time ??? |
-| 5/28 | Homework Time ??? |
-| 6/2 | Homework Time ??? |
+| 5/26 | Homework / Project help |
+| 5/28 | Homework / Project help |
+| 6/2 | Homework / Project help |
 | 6/4 | Project Presentations!!! |-->
 
 
