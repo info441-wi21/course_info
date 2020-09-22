@@ -8,7 +8,7 @@ Dive deeply into the world of server-side development. Build your own web applic
 
 Instructor: [Kyle Thayer](http://kylethayer.com)
 
-TA's: William Kwok, Chris Forbes
+TA's: Jill Nguyen, Nam Pham
 
 (The team wants to thank [Dave Stearns](https://www.linkedin.com/in/david-stearns-09a27319/) for making their material available as a base for this course and [Nigini Oliveira](http://nigini.me/) for his advice and version of the course repo.) 
 
@@ -18,15 +18,15 @@ Office: Online!
 
 Office Hours: 
 
-&nbsp;&nbsp;&nbsp;&nbsp;Kyle: Wed. 12-1pm Or email or message me to schedule separately
+&nbsp;&nbsp;&nbsp;&nbsp;Kyle: TBD Or email or message me to schedule separately
 
-&nbsp;&nbsp;&nbsp;&nbsp;William: TBD
+&nbsp;&nbsp;&nbsp;&nbsp;Jill: TBD
 
-&nbsp;&nbsp;&nbsp;&nbsp;Chris: Tuesday class time and Monday 2-4pm
+&nbsp;&nbsp;&nbsp;&nbsp;Nam: TBD
 
 ## Communication
 
-All communication should happen through [Canvas](https://canvas.uw.edu/courses/1373080 "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3a364e3e9961e3474b8d9a8f4877762e95%40thread.tacv2/conversations?groupId=8b1d0972-e0c2-45a1-88be-9aa0761aa34a&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)) (code 41h0qjp).
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1399093/ "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](hhttps://teams.microsoft.com/l/team/19%3a3f4caa1feaa74c5f80fa38f72bfb3984%40thread.tacv2/conversations?groupId=75b5b639-c0c7-42b2-83f4-2aba0a6605bc&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)) (code haabw2r).
 
 ## Schedule
 
