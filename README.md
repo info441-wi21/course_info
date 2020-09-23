@@ -46,38 +46,38 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
 | |[!! Assignment (summary branch)](https://classroom.github.com/a/1j32Nag7)|
-| |[!! Exercise](https://classroom.github.com/a/uvgSMH_5) - helloworld|
+| |[!! Exercise](https://classroom.github.com/a/fDGTPTx6) - helloworld|
 | 10/7 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
 | |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
-| |[!! Exercise (docker)](https://classroom.github.com/a/uvgSMH_5)|
+| |[!! Exercise (docker)](https://classroom.github.com/a/fDGTPTx6)|
 | 10/12 | Deploying & Encrypting |
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
-| |[!! Exercise (deploy)](https://github.com/info441/exercises/tree/master/deploy)
+| |[!! Exercise (deploy)](https://classroom.github.com/a/fDGTPTx6)
 | 10/14 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
-| |[!!Exercise (testing)](https://github.com/info441/exercises/tree/master/testing)|
+| |[!!Exercise (testing)](https://classroom.github.com/a/fDGTPTx6)|
 | 10/19 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
 | |Docker Network slides: <a href="slides/lecture%20-%20Docker%20Networks.pptx">pptx</a>, <a href="slides/lecture%20-%20Docker%20Networks.pdf">pdf</a>|
-| |[!!Exercise (hmac)](https://github.com/info441/exercises/tree/master/hmac)|
+| |[!!Exercise (hmac)](https://classroom.github.com/a/fDGTPTx6)|
 | 10/21 | Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
-| |[!!Exercise (postman)](https://github.com/info441/exercises/tree/master/postman)|
+| |[!!Exercise (postman)](https://classroom.github.com/a/fDGTPTx6)|
 | 10/26 | Catch-Up |
 | 10/28 | REST APIs + Middleware + announce project |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
-| |[!!Exercise (middleware)](https://github.com/info441/exercises/tree/master/middleware)|
+| |[!!Exercise (middleware)](https://classroom.github.com/a/fDGTPTx6)|
 | 11/2 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
 | 11/4 | Node.js|
@@ -89,7 +89,7 @@ Below, are the contents for each class day.
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
-| |[!!Exercise (microservices)](https://github.com/INFO441-19au-org/exercises-kylethayer/tree/master/microservices)|
+| |[!!Exercise (microservices)](https://classroom.github.com/a/fDGTPTx6)|
 | 11/11 | No class - Veteran's Day |
 | 11/16 | Present / Review Proposals |
 | 11/18 | Message Queues |
@@ -112,7 +112,8 @@ Below, are the contents for each class day.
 
 ## Course Work
 
-This course will be evaluated based on lecture exercises (10% of grade), 6 assignments (70% of grade), and a final project (20% of grade).
+This course will be evaluated based on lecture 
+cises (10% of grade), 6 assignments (70% of grade), and a final project (20% of grade).
 
 All assignments will be done individually or with one other person. You will turn in your own copy of the code.
 
