@@ -26,7 +26,7 @@ Office Hours:
 
 ## Communication
 
-All communication should happen through [Canvas](https://canvas.uw.edu/courses/1399093/ "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3a3f4caa1feaa74c5f80fa38f72bfb3984%40thread.tacv2/conversations?groupId=75b5b639-c0c7-42b2-83f4-2aba0a6605bc&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2)) (code haabw2r).
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1399093/ "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams](https://teams.microsoft.com/l/team/19%3a3f4caa1feaa74c5f80fa38f72bfb3984%40thread.tacv2/conversations?groupId=75b5b639-c0c7-42b2-83f4-2aba0a6605bc&tenantId=f6b6dd5b-f02f-441a-99a0-162ac5060bd2) (code haabw2r).
 
 ## Schedule
 
@@ -39,7 +39,6 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/env/">Environment Variables</a>|
 | |<a href="https://drstearns.github.io/tutorials/gointro/">Introduction to Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/golang/">The Go Language</a>|
-| |<a href="https://canvas.uw.edu/courses/1373080/assignments/5385825">Lecture Exercises</a>|
 | 10/5 | Go Web Services
 | |<a href="https://drstearns.github.io/tutorials/goslicemap/">Go Slices and Maps</a>|
 | |<a href="https://drstearns.github.io/tutorials/goweb/">Go Web Servers</a>|
@@ -48,7 +47,6 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
 | |[!! Assignment (summary branch)](https://classroom.github.com/a/Fvn8eZcd)|
 | |[!! Exercise](https://classroom.github.com/a/uvgSMH_5) - helloworld|
-| |<a href="https://canvas.uw.edu/courses/1373080/assignments/5399553">Lecture Exercises</a>)|
 | 10/7 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
