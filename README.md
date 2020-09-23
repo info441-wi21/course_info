@@ -45,7 +45,7 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/cors/">Cross-Origin Resource Sharing</a>|
 | |<a href="https://drstearns.github.io/tutorials/gojson/">Go Structs and JSON</a>|
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
-| |[!! Assignment (summary branch)](https://classroom.github.com/a/Fvn8eZcd)|
+| |[!! Assignment (summary branch)](https://classroom.github.com/a/1j32Nag7)|
 | |[!! Exercise](https://classroom.github.com/a/uvgSMH_5) - helloworld|
 | 10/7 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
