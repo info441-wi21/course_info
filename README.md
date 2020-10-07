@@ -20,9 +20,9 @@ Office Hours:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Kyle: TBD Or email or message me to schedule separately
 
-&nbsp;&nbsp;&nbsp;&nbsp;Jill: TBD
+&nbsp;&nbsp;&nbsp;&nbsp;Jill: Wednesday 2:30-3:30pm or by appt
 
-&nbsp;&nbsp;&nbsp;&nbsp;Nam: TBD
+&nbsp;&nbsp;&nbsp;&nbsp;Nam: Monday 2:30-3:30pm or by appt
 
 ## Communication
 
