@@ -106,9 +106,8 @@ Below, are the contents for each class day.
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=f6kdp27TYZs">Rob Pike on Go Concurrency Patterns</a> (<a href="https://talks.golang.org/2012/concurrency.slide#1">slides from talk</a>)|
 | |<a href="https://www.golang-book.com/books/intro/10">Concurrency</a>|
 | 12/2 | Homework / Project help |
-| 12/4 | Homework / Project help |
-| 12/9 | Homework / Project help |
-| 12/11 | Project Presentations!!! |-->
+| 12/7 | Homework / Project help |
+| 12/9 | Project Presentations!!! |-->
 
 
 ## Course Work
