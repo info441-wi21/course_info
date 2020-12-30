@@ -20,9 +20,9 @@ Office Hours:
 
 &nbsp;&nbsp;&nbsp;&nbsp;Kyle: TBD Or email or message me to schedule separately
 
-&nbsp;&nbsp;&nbsp;&nbsp;Jill: Wednesday 2:30-3:30pm or by appt
+&nbsp;&nbsp;&nbsp;&nbsp;Jill: TBD
 
-&nbsp;&nbsp;&nbsp;&nbsp;Nam: Monday 2:30-3:30pm or by appt
+&nbsp;&nbsp;&nbsp;&nbsp;Nam: TBD
 
 ## Communication
 
@@ -113,8 +113,7 @@ Below, are the contents for each class day.
 
 ## Course Work
 
-This course will be evaluated based on lecture 
-cises (10% of grade), 6 assignments (70% of grade), and a final project (20% of grade).
+This course will be evaluated based on lecture exercises (15% of grade), 6 assignments (65% of grade), and a final project (20% of grade).
 
 All assignments will be done individually or with one other person. You will turn in your own copy of the code.
 
