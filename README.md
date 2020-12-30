@@ -26,7 +26,7 @@ Office Hours:
 
 ## Communication
 
-All communication should happen through [Canvas](https://canvas.uw.edu/courses/1434947/ "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and [Microsoft Teams]() (coming soon).
+All communication should happen through [Canvas](https://canvas.uw.edu/courses/1434947/ "Canvas page for the UW iSchool Autumn 2019 Server-side development course") and Microsoft Teams (coming soon).
 
 ## Schedule
 
