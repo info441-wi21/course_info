@@ -47,12 +47,12 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/tokenizing/">Tokenizing HTML Streams</a>|
 | |[!! Assignment (summary branch)](https://classroom.github.com/a/hEnxptt_)|
 | |[!! Exercise](https://classroom.github.com/a/TcvFK8fw) - helloworld|
-<!---
-| 10/7 | Docker |
+| 1/11 | Docker |
 | |<a href="https://drstearns.github.io/tutorials/docker/">Containerizing with Docker</a>|
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
 | |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
-| |[!! Exercise (docker)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!! Exercise (docker)](https://classroom.github.com/a/TcvFK8fw)|
+<!---
 | 10/12 | Deploying & Encrypting |
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
