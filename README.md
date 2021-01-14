@@ -52,13 +52,13 @@ Below, are the contents for each class day.
 | |<a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/">Dockerfile Best Practices</a>|
 | |<a href="https://docs.docker.com/engine/admin/start-containers-automatically/#use-a-restart-policy">Docker restart policies</a>|
 | |[!! Exercise (docker)](https://classroom.github.com/a/TcvFK8fw)|
-<!---
-| 10/12 | Deploying & Encrypting |
+| 1/13 | Deploying & Encrypting |
 | |<a href="https://drstearns.github.io/tutorials/https/">Communicating Securely with HTTPS</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2do/">Deploying to Digital Ocean</a>|
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
-| |[!! Exercise (deploy)](https://classroom.github.com/a/fDGTPTx6)
+| |[!! Exercise (deploy)](https://classroom.github.com/a/TcvFK8fw)
+<!---
 | 10/14 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
