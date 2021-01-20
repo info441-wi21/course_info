@@ -58,6 +58,7 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/deploy2aws/">Deploying to Amazon Web Services (AWS)</a>|
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |[!! Exercise (deploy)](https://classroom.github.com/a/TcvFK8fw)
+| 1/20 | Catch-Up |
 <!---
 | 10/14 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
@@ -74,7 +75,6 @@ Below, are the contents for each class day.
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
 | |[!!Exercise (postman)](https://classroom.github.com/a/fDGTPTx6)|
-| 10/26 | Catch-Up |
 | 10/28 | REST APIs + Middleware + announce project |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
