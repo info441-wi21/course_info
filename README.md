@@ -59,11 +59,11 @@ Below, are the contents for each class day.
 | |<a href="https://blog.golang.org/cover">The Cover Story</a>|
 | |[!! Exercise (deploy)](https://classroom.github.com/a/TcvFK8fw)
 | 1/20 | Catch-Up |
-<!---
-| 10/14 | Automated Tests |
+| 1/25 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
 | |[!!Exercise (testing)](https://classroom.github.com/a/fDGTPTx6)|
+<!---
 | 10/19 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
