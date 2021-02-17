@@ -62,35 +62,35 @@ Below, are the contents for each class day.
 | 1/25 | Automated Tests |
 | |<a href="https://drstearns.github.io/tutorials/testing/">Automated Testing in Go</a>| 
 | |CORS slides: <a href="slides/lecture%20-%20CORS.pptx">pptx</a>, <a href="slides/lecture%20-%20CORS.pdf">pdf</a>|
-| |[!!Exercise (testing)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!!Exercise (testing)](https://classroom.github.com/a/TcvFK8fw)|
 | 1/27 | Tracking Sessions |
 | |<a href="https://drstearns.github.io/tutorials/sessions/">Tracking Sessions</a>|
 | |<a href="https://redis.io/topics/data-types-intro">Redis Datatypes</a>|
 | |<a href="https://docs.docker.com/engine/tutorials/networkingcontainers/">Docker Networks</a>|
 | |Docker Network slides: <a href="slides/lecture%20-%20Docker%20Networks.pptx">pptx</a>, <a href="slides/lecture%20-%20Docker%20Networks.pdf">pdf</a>|
-| |[!!Exercise (hmac)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!!Exercise (hmac)](https://classroom.github.com/a/TcvFK8fw)|
 | 2/1 | Authentication / Persisting Data |
 | |<a href="https://drstearns.github.io/tutorials/godb/">Talking to Databases from Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/gohandlerctx/">Sharing Values with Go Handlers</a>|
 | |<a href="https://drstearns.github.io/tutorials/authentication/">Authenticating Users</a>|
-| |[!!Exercise (postman)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!!Exercise (postman)](https://classroom.github.com/a/TcvFK8fw)|
 | 2/3 | REST APIs + Middleware |
 | |<a href="https://drstearns.github.io/tutorials/gomiddleware/">Middleware Patterns in Go</a>|
 | |<a href="https://drstearns.github.io/tutorials/rest/">REST APIs</a>|
-| |[!!Exercise (middleware)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!!Exercise (middleware)](https://classroom.github.com/a/TcvFK8fw)|
 | 2/8 | Protecting Data Structures |			
 | |<a href="https://drstearns.github.io/tutorials/mutexes/">Protecting Data Structures with Mutexes</a>|
 | 2/10 | Node.js|
 | |<a href="https://drstearns.github.io/tutorials/nodeweb/">Node.js Microservices</a>|
 | |<a href="https://expressjs.com/en/starter/basic-routing.html">Express.js Basic Routing</a>|
 | |<a href="https://github.com/mysqljs/mysql/blob/master/Readme.md">Node.js MySQL Driver Overview</a>|
-<!---
-| 11/9 | Microservices|
+| 2/17 | Microservices|
 | |<a href="https://www.nginx.com/blog/introduction-to-microservices/">NGINX 7-Part article series on Microservices</a>|
 | |<a class="inline_disabled"  href="https://youtu.be/5qJ_BibbMLw">Fast Delivery Talk</a> by Adrian Cockcroft|
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
-| |[!!Exercise (microservices)](https://classroom.github.com/a/fDGTPTx6)|
+| |[!!Exercise (microservices)](https://classroom.github.com/a/TcvFK8fw)|
+<!---
 | 11/11 | No class - Veteran's Day |
 | 11/16 | Present / Review Proposals |
 | 11/18 | Message Queues |
