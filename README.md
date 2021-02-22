@@ -90,9 +90,8 @@ Below, are the contents for each class day.
 | |<a class="inline_disabled"  href="https://youtu.be/1wiMLkXz26M">Migrating to Microservices Talk</a> by Adrian Cockcroft|
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
 | |[!!Exercise (microservices)](https://classroom.github.com/a/TcvFK8fw)|
+| 2/22 | Present / Review Proposals |
 <!---
-| 11/11 | No class - Veteran's Day |
-| 11/16 | Present / Review Proposals |
 | 11/18 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
