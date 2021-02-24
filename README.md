@@ -91,11 +91,11 @@ Below, are the contents for each class day.
 | |<a href="https://golang.org/pkg/net/http/httputil/#ReverseProxy">httputil.ReverseProxy</a>|
 | |[!!Exercise (microservices)](https://classroom.github.com/a/TcvFK8fw)|
 | 2/22 | Present / Review Proposals |
-<!---
-| 11/18 | Message Queues |
+| 2/24 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
 | |[Use case: Asynchronous Tasks in Python with Celery and RabbitMQ](https://www.youtube.com/watch?v=fg-JfZBetpM)|
+<!---
 | 11/23 | Web Sockets |
 | |[TALK: Real-life WebSocket Use Cases and Experiences](https://youtu.be/khULSvz_hdE)|
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
