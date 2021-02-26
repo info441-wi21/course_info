@@ -111,10 +111,10 @@ It is important to distinguish when errors should be reported, and how to respon
 ### I’m unsure where to start debugging issues
 Server not running? Website not appearing? Docker container immediately exiting? There are a few useful commands you will want to use to determine where an issue lies.
 1. docker ps -a
-  1. This command will let you see what containers are actively running, and which have exited. Good to see what containers have failed and when they failed.
+   1. This command will let you see what containers are actively running, and which have exited. Good to see what containers have failed and when they failed.
 2. docker logs &lt;containername&gt;
-  1. This command will let you see what the container actually logged when you do log.Print or a different logging command (I believe, it may be fmt.Printf I can’t remember)
-  2. This way you can add log statements to where you THINK a server might crash and then see if it gets there and debug what might be crashing
+   1. This command will let you see what the container actually logged when you do log.Print or a different logging command (I believe, it may be fmt.Printf I can’t remember)
+   2. This way you can add log statements to where you THINK a server might crash and then see if it gets there and debug what might be crashing
 
 
 ## Assignment 3
