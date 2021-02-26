@@ -1,24 +1,24 @@
 # Debugging Tips
 ## Setting up GO
 ### “Go install” vs “Go Build”
-*Build vs compile vs executable:* When source code is compiled and built, it becomes an executable file. You cannot directly run the source code file(s) in Go (a la Javascript). Compile process ensures that source code can be turned into an executable. It is the build process that’s actually creating the final executable. 
+**Build vs compile vs executable:** When source code is compiled and built, it becomes an executable file. You cannot directly run the source code file(s) in Go (a la Javascript). Compile process ensures that source code can be turned into an executable. It is the build process that’s actually creating the final executable. 
 
-*Note, not all Go files can be turned into an executable:* To create an executable file, you must invoke go install. go install succeeds only if there is a .go file inside your directory that contains 1) *a main() function*, and 2) *“package main”* declaration. (GOTCHA: package main must be the statement in the file) *This is how Go knows “where” to start the compilation process.*
+**Note, not all Go files can be turned into an executable:** To create an executable file, you must invoke go install. go install succeeds only if there is a .go file inside your directory that contains 1) **a main() function**, and 2) **“package main”** declaration. (GOTCHA: package main must be the statement in the file) **This is how Go knows “where” to start the compilation process.**
 
-*go install vs go build:* Both commands create an executable. The difference is that go install puts the executable in $GOPATH/bin, and go build puts it in the current working directory. 
+**go install vs go build:** Both commands create an executable. The difference is that go install puts the executable in $GOPATH/bin, and go build puts it in the current working directory. 
 
-*How to run the executable file:* Go executables do not have a file extension (like .exe in Windows, or .sh for shell script). Instead, they take on the name of the folder containing the .go file with the *main* function. To run your go executables from any directory, make sure to add $GOPATH to your $PATH (by editing your ~/.bash_profile)
+**How to run the executable file:** Go executables do not have a file extension (like .exe in Windows, or .sh for shell script). Instead, they take on the name of the folder containing the .go file with the **main** function. To run your go executables from any directory, make sure to add $GOPATH to your $PATH (by editing your ~/.bash_profile)
 
 _So how do you know if your code is valid Go code? If go install or go build finishes with no errors._
 
 ### I made a code change, and re-ran the executable, but nothing changed. Why? 
-Always ‘go install’ before you re-run your code. Otherwise, you won’t see any changes. Many Go newcomers are baffled when they make some code changes, run their executable, and see nothing has changed. Typically, that’s because he/she has forgotten to compile the code and rebuild the executable via *‘go install’*. 
+Always ‘go install’ before you re-run your code. Otherwise, you won’t see any changes. Many Go newcomers are baffled when they make some code changes, run their executable, and see nothing has changed. Typically, that’s because he/she has forgotten to compile the code and rebuild the executable via **‘go install’**. 
 
-Remember, *Go is a compiled language.* That means, running code requires you to re-build / re-compile your entire source code, for you to see code changes take effect. 
+Remember, **Go is a compiled language.** That means, running code requires you to re-build / re-compile your entire source code, for you to see code changes take effect. 
 
 ### go build / go install did not create an executable
 
-It might be because there’s no .go file with *a main function*, or a *package main* signature inside your folder. 
+It might be because there’s no .go file with **a main function**, or a **package main** signature inside your folder. 
 
 Also, remember that go install puts the executable in $GOPATH/bin. 
 
