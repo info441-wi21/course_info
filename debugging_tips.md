@@ -99,22 +99,22 @@ This is known as the call stack-- when an internal function or command is called
 It is important to distinguish when errors should be reported, and how to respond to the user. Here is a few scenarios we want you to think about at a high level:
 
 1. A user logs in on your front end, and sends data to your back end to log themselves in. The user sends this data as JSON, where your server has an error detecting they used a character you dont want to allow.
-  a. If you crash the server using log.Fatal, the user will never receive a response back and your server will need to start back up all over again. This is the equivalent to something like Google crashing if you make a bad request to it.
-  b. If you just print out the error using log.Print, the user will never receive a response back.
-  c. When the user never receives a response back, they dont know what they did wrong and they just think your site is down.
-  d. What you want to do in this case is return a message to the user saying that they had bad input, and you achieve this by sending data back to the user with http.Write or json.NewEncoder.
+	1. If you crash the server using log.Fatal, the user will never receive a response back and your server will need to start back up all over again. This is the equivalent to something like Google crashing if you make a bad request to it.
+	2. If you just print out the error using log.Print, the user will never receive a response back.
+	3. When the user never receives a response back, they dont know what they did wrong and they just think your site is down.
+	4. What you want to do in this case is return a message to the user saying that they had bad input, and you achieve this by sending data back to the user with http.Write or json.NewEncoder.
 2. A user logs in on your front end, and sends data to your back end to log themselves in. The user sends data that looks fine, but your server crashes because of some small issue you never caught.
-  a. Logging the error is fine, but crashing is NOT. log.Fatal should never be used in your code UNLESS it is part of the setup procedure before http.ListenAndServe is called.
-  b. Logging the error as part of developer debugging is fine, but you should DELETE it in your final production build because log spam everywhere is annoying to other developers on your project.
-  c. You would want to log your error in this case. However, you also want to log important metadata of the time this occurred, what the user’s input was, and maybe some other things about your server at that time. This might look clunky if you manually insert it in that function, and the logs would definitely look really full sometimes. That is why there are tools like SumoLogic which let you manage logs and outages with nice dashboard interfaces.
+   1. Logging the error is fine, but crashing is NOT. log.Fatal should never be used in your code UNLESS it is part of the setup procedure before http.ListenAndServe is called.
+   2. Logging the error as part of developer debugging is fine, but you should DELETE it in your final production build because log spam everywhere is annoying to other developers on your project.
+   3. You would want to log your error in this case. However, you also want to log important metadata of the time this occurred, what the user’s input was, and maybe some other things about your server at that time. This might look clunky if you manually insert it in that function, and the logs would definitely look really full sometimes. That is why there are tools like SumoLogic which let you manage logs and outages with nice dashboard interfaces.
   
 ### I’m unsure where to start debugging issues
 Server not running? Website not appearing? Docker container immediately exiting? There are a few useful commands you will want to use to determine where an issue lies.
 1. docker ps -a
-  a. This command will let you see what containers are actively running, and which have exited. Good to see what containers have failed and when they failed.
+  1. This command will let you see what containers are actively running, and which have exited. Good to see what containers have failed and when they failed.
 2. docker logs &lt;containername&gt;
-  a. This command will let you see what the container actually logged when you do log.Print or a different logging command (I believe, it may be fmt.Printf I can’t remember)
-  b. This way you can add log statements to where you THINK a server might crash and then see if it gets there and debug what might be crashing
+  1. This command will let you see what the container actually logged when you do log.Print or a different logging command (I believe, it may be fmt.Printf I can’t remember)
+  2. This way you can add log statements to where you THINK a server might crash and then see if it gets there and debug what might be crashing
 
 
 ## Assignment 3
