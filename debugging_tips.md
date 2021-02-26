@@ -50,12 +50,14 @@ lib.MyFunc()     // notice I had to specify lib.MyFunc
 If you install the golang tooling to VSCode or your preferred golang editor, it will provide auto importing functionalities.
 
 ### Bash Cheatsheet
+```
 pwd // get current working directory
 echo $GOPATH  // see what $GOPATH is
 vi ~/.bash_profile   // edit bash profile in VI text editor
 source ~/.bash_profile //  reload bash profile 
 export  VAR_NAME=VAL   // assign value VAL to variable VAR_NAME
 PATH = ${GOPATH}/bin:${PATH}  // add $GOPATH to $PATH
+```
 
 ## General
 
