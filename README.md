@@ -94,11 +94,11 @@ Below, are the contents for each class day.
 | 2/24 | Message Queues |
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-go.html">RabbitMQ Tutorial for Go</a>|
 | |<a href="https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html">RabbitMQ Tutorial for Node.js</a>|
-<!---
-| 11/23 | Web Sockets |
+| 3/1 | Web Sockets |
 | |[TALK: Real-life WebSocket Use Cases and Experiences](https://youtu.be/khULSvz_hdE)|
 | |<a href="https://godoc.org/github.com/gorilla/websocket">Gorilla Web Socket Package</a>|
 | |<a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications">Writing WebSocket Client Applications</a>|
+<!---
 | 11/25 | No class - Thanksgiving |
 | 11/30 | Concurrent Programming with Channels |
 | |<a class="inline_disabled" href="https://www.youtube.com/watch?v=cN_DpYBzKso">Rob Pike on Concurrency is not Parallelism</a> (<a href="https://talks.golang.org/2012/waza.slide#1">slides from talk</a>)|
