@@ -141,3 +141,18 @@ OR
 docker volume prune
 ```
 
+
+TODO: Kyle will add stuff about:
+Debugging:
+ - print statements (start of file, when error occurs)
+ - to see if your publish process is working, print at the start
+  
+Docker debugging
+  - GOPATH and GOROOT
+  
+  - to get bash running in your docker container:
+     https://vsupalov.com/debug-docker-container/
+  
+   Docker Mod
+   - don't make your folder be "github.com"
+   - make sure top of mod file matches the path
