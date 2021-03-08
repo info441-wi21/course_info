@@ -156,3 +156,5 @@ Docker debugging
    Docker Mod
    - don't make your folder be "github.com"
    - make sure top of mod file matches the path
+
+- TLS Handshake errors are probably fine
